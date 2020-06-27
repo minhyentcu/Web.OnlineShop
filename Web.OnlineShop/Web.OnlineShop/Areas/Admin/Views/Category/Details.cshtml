@@ -1,0 +1,77 @@
+﻿@model Web.OnlineShop.Entity.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    Danh mục bài viết
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayOrder)
+        </dd>
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowOnHome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowOnHome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="row">
+        <div class="col-sm-pull-1">
+            <a class="btn btn-xs btn-success float-md-left " href="@Url.Action("Edit","Category",new { id=Model.Id })">Chỉnh sửa</a>
+        </div>
+        <div class="col-sm-1">
+            <a class="btn btn-xs btn-danger float-md-left " href="@Url.Action("Index","Category")">Trở lại</a>
+        </div>
+    </div>
+</p>

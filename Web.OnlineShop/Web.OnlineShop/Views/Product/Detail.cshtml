@@ -1,0 +1,248 @@
+﻿@model Web.OnlineShop.Entity.Product
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var categoryProduct = (Web.OnlineShop.Entity.ProductCategory)ViewBag.ProductCategory;
+    var reletedProducts = (IEnumerable<Web.OnlineShop.Entity.Product>)ViewBag.ReletedProducts;
+    var imageUrls = new List<string>();
+    if (ViewBag.ImageUrls != null)
+    {
+        imageUrls = (List<string>)ViewBag.ImageUrls;
+    }
+    var contact = new Web.OnlineShop.Entity.Contact();
+    if (ViewBag.Contact != null)
+    {
+        contact = (Web.OnlineShop.Entity.Contact)ViewBag.Contact;
+    }
+
+}
+<link href="/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/Assets/Client/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/Assets/Client/js/move-top.js"></script>
+<script type="text/javascript" src="/Assets/Client/js/easing.js"></script>
+<script src="/Assets/Client/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<link href="/Assets/Client/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="/Assets/Client/css/global.css">
+<script src="/Assets/Client/js/slides.min.jquery.js"></script>
+<script>
+    $(function () {
+        $('#products').slides({
+            preload: true,
+            preloadImage: 'img/loading.gif',
+            effect: 'slide, fade',
+            crossfade: true,
+            slideSpeed: 350,
+            fadeSpeed: 500,
+            generateNextPrev: true,
+            generatePagination: false
+        });
+    });
+</script>
+<script type="text/javascript">
+    function DropDown(el) {
+        this.dd = el;
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+        }
+    }
+
+    $(function () {
+
+        var dd = new DropDown($('#dd'));
+
+        $(document).click(function () {
+            // all dropdowns
+            $('.wrapper-dropdown-2').removeClass('active');
+        });
+
+    });
+
+</script>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a style="font-size:small" href="/">Trang chủ</a>
+        </li>
+        <li class="breadcrumb-item " aria-current="page"><a href="/san-pham" style="font-size:small">Sản phẩm</a></li>
+        <li class="breadcrumb-item " aria-current="page"><a href="/san-pham/@categoryProduct.MetaTitle-@categoryProduct.Id" style="font-size:small">@categoryProduct.Name</a></li>
+        <li class="breadcrumb-item " aria-current="page" style="font-size:small">@Model.Name</li>
+    </ol>
+</nav>
+<div class="content">
+    <div class="section group">
+        <div class="cont-desc span_1_of_2">
+            <div class="product-details">
+                <div class="grid images_3_of_2 ">
+                    <div id="container">
+                        <div id="products_example">
+                            <div id="products">
+                                <div class="slides_container">
+                                    @if (imageUrls.Count > 0)
+                                    {
+                                        foreach (var item in imageUrls)
+                                        {
+                                            <a class="zoom" href="#"><img src="@Url.Content(item)" alt=" " /></a>
+                                        }
+                                    }
+                                </div>
+                                <ul class="pagination">
+                                    @if (imageUrls.Count > 0)
+                                    {
+                                        foreach (var item in imageUrls)
+                                        {
+                                            <li><a class="zoom" href="#"><img src="@Url.Content(item)" alt=" " /></a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="desc span_3_of_2" style="border:10px solid #ebebeb;padding:20px">
+                    <h2>@Model.Name</h2>
+                    <p>@Model.Description</p>
+                    <h3 style="font-weight:bold">Thông số kỹ thuật</h3>
+                    <p>@Html.Raw(HttpUtility.HtmlDecode(Model.Specifications))</p>
+                    <div class="mb-20">
+                        <h1 class="mr-2 " style="font-size:x-large"> Liên hệ</h1>
+                        <a href="tel:@contact.Phone" class="btn btn-danger col-md-3" style="color:white">@contact.Phone</a> 
+                        <a href="tel:@contact.PhoneSecond" class="btn btn-danger col-md-3" style="color:white">@contact.PhoneSecond</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="section-title-cus mb-20">
+                <span class="group-icon">
+                    <i class="fas fa-door-open"></i>
+                </span>
+                <h2>Mô tả sản phẩm</h2>
+            </div>
+            <div class="product_desc">
+
+                <div id="horizontalTab">
+                    <h2 style="font-weight:bold">Thông số kỹ thuật</h2>
+                    <p>@Html.Raw(HttpUtility.HtmlDecode(Model.Specifications))</p>
+                    <br />
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Detail));
+                    <div class="resp-tabs-container">
+                        <div class="product-desc">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#horizontalTab').easyResponsiveTabs({
+                        type: 'default', //Types: default, vertical, accordion
+                        width: 'auto', //auto or any width like 600px
+                        fit: true   // 100% fit in a container
+                    });
+                });</script>
+            <div class="section-title-cus mb-20">
+                <span class="group-icon">
+                    <i class="fas fa-door-open"></i>
+                </span>
+                <h2>Sản phẩm liên quan</h2>
+            </div>
+            <div class="content_bottom">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            @foreach (var item in reletedProducts)
+            {
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
+                <div class="grid_1_of_4 images_1_of_4 zoom ">
+                    <div> <a href="@url"><img src="@Url.Content(item.Image)" alt=""></a></div>
+
+                    <div class="price" style="border:none">
+                        <h2>@item.Name </h2>
+                        <div class="price-details">
+                        </div>
+                        <br />
+                        <a href="@url" class=" btn btn-success"> Xem chi tiết</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="see">
+            <p><a href="/san-pham/@categoryProduct.MetaTitle-@categoryProduct.Id">Xem tất cả</a></p>
+        </div>
+    </div>
+</div>
+<style>
+    .section-title-cus {
+        border-top: 3px solid #ed1b24;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+        .section-title-cus h2 {
+            margin: 0;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #ed1b24;
+            font-size: 15px;
+            display: inline-block;
+            padding-left: 60px;
+            padding-right: 20px;
+            height: 39px;
+            line-height: 39px;
+            position: relative;
+            font-weight: 500;
+        }
+
+            .section-title-cus h2::after {
+                content: "";
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 39px 39px 0 0;
+                border-color: #ed1b24 transparent transparent;
+                position: absolute;
+                right: -39px;
+                top: 0;
+            }
+
+        .section-title-cus .group-icon {
+            position: absolute;
+            top: -3px;
+            left: 0;
+            background: #231f20;
+            padding: 10px;
+            display: inline-block;
+            color: #fff;
+            width: 39px;
+            height: 42px;
+            text-align: center;
+            line-height: 19px;
+            z-index: 1;
+        }
+
+    .zoom {
+        /* padding: 50px;*/
+        transition: transform .2s; /* Animation */
+        /* width: 200px;
+        height: 200px;*/
+        /* margin: 0 auto;*/
+    }
+
+        .zoom:hover {
+            transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+</style>
+
+
+

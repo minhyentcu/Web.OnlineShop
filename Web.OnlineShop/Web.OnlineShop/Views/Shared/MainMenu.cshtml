@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Web.OnlineShop.Entity.Menu>
+@{ var categorys = (IEnumerable<Web.OnlineShop.Entity.Category>)ViewBag.Contents;
+    var session = (Web.OnlineShop.Common.UserLogin)Session[Web.OnlineShop.Common.CommonConstants.USER_SESSION];}
+<div class="menu navigation-menu-area">
+    <ul>
+        @foreach (var item in Model)
+        {
+    <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>}
+        @foreach (var item in categorys)
+        {
+    <li><a href="/bai-viet/@item.MetaTitle-@item.Id" target="@item.MetaTitle">@item.Name</a></li>}
+        @if (session != null)
+        {
+            if (session.GroupID == Web.OnlineShop.Common.CommonConstants.ADMIN_GROUP || session.GroupID == Web.OnlineShop.Common.CommonConstants.MOD_GROUP)
+        {
+    <li><a href="/Admin/Home/Index" target="">Quản trị</a></li>}}
+
+        <div class="clear"></div>
+
+    </ul>
+
+</div>
+<style>
+    a:hover {
+        color: red;
+        text-decoration: none;
+    }
+</style>

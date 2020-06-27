@@ -1,0 +1,87 @@
+﻿@model Web.OnlineShop.Entity.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    Thông tin sản phẩm
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <span>Tên sản phẩm</span>   
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCategory.Name)
+        </dd>
+
+       
+        <dt>
+            <span>Danh mục sản phẩm</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            <span>Miêu tả sản phẩm</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            <span>Hình ảnh sản phẩm</span>
+        </dt>
+
+        <dd>
+            <img alt="image" src="@Url.Content(Model.Image)" @*class="rounded-circle "*@ width="55" />
+        </dd>
+        <dt>
+            <span>Thông tin sản phẩm</span>
+        </dt>
+
+        <dd>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+        </dd>
+
+        <dt>
+            <span>Trạng thái</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            <span>Ngày tạo</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt>
+            <span>Ngày chỉnh sửa</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+    </dl>
+</div>
+<p>
+    <div class="row">
+        <div class="col-sm-pull-1">
+            <a class="btn btn-xs btn-success float-md-left " href="@Url.Action("Edit","Product",new { id=Model.Id })">Chỉnh sửa</a>
+        </div>
+        <div class="col-sm-1">
+            <a class="btn btn-xs btn-danger float-md-left " href="@Url.Action("Index","Product")">Trở lại</a>
+        </div>
+    </div>
+</p>

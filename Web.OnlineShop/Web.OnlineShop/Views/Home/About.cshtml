@@ -1,0 +1,26 @@
+﻿@model  Web.OnlineShop.Entity.About
+
+@{
+    ViewBag.Title = "Giới thiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="font-size:small">
+        <li class="breadcrumb-item">
+            <a style="font-size:small" href="/">Trang chủ</a>
+        </li>
+        <li class="breadcrumb-item " aria-current="page">Giới thiệu</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class=" col-lg-12">
+        <img class="img-fluid w-100 mb-40" src="@Url.Content(Model.Image)" alt="@Model.Name" />
+    </div>
+</div>
+<div class="row">
+    <div class="grid-container col-lg-12">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+    </div>
+</div>

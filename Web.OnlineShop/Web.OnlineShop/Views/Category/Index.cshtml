@@ -1,0 +1,52 @@
+﻿@model  IEnumerable<Web.OnlineShop.Entity.Content>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (Web.OnlineShop.Entity.Category)ViewBag.category;
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a style="font-size:small" href="/">Trang chủ</a>
+        </li>
+        <li class="breadcrumb-item " aria-current="page"><a href="/bai-viet" style="font-size:small">Bài viết</a></li>
+        <li class="breadcrumb-item " aria-current="page" style="font-size:small">@category.Name</li>
+    </ol>
+</nav>
+<div class="content">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-3">
+                @{Html.RenderAction("PostsCategory", "Category");}
+            </div>
+            <div class="col-lg-9">
+                <div class="section group">
+                    @foreach (var item in Model)
+                    {
+                        var url = "/bai-viet/" + category.MetaTitle + "/" + item.MetaTitle + "-" + item.Id;
+                        <div class="grid_1_of_4 images_1_of_4 zoom">
+                            <a href="@url"><img src="@Url.Content(item.Image)" alt="@item.Name" /></a>
+                            <h2 style="font-size:small">@item.Name </h2>
+                            <div class="price-details">
+                            </div>
+                            <br />
+                             <a href="@url" class="btn btn-success">Xem chi tiết</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="content_bottom"></div>
+</div>
+<style>
+    .zoom {
+        transition: transform .2s;
+    }
+
+        .zoom:hover {
+            transform: scale(1.1);
+        }
+</style>
+

@@ -1,0 +1,25 @@
+﻿@model Web.OnlineShop.Entity.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Thông tin người dùng
+}
+<h3>Bạn có muốn xóa người dùng : @Model.UserName</h3>
+<div>
+    <hr />
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a class="btn btn-xs btn-primary " href="@Url.Action("Index","User")">Trở lại</a>
+        </div>
+    }
+</div>

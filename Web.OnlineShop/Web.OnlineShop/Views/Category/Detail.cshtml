@@ -1,0 +1,35 @@
+﻿@model  Web.OnlineShop.Entity.Content
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (Web.OnlineShop.Entity.Category)ViewBag.category;
+}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a  style="font-size:small" href="/">Trang chủ</a>
+        </li>
+        <li class="breadcrumb-item " aria-current="page"><a  href="/bai-viet" style="font-size:small">Bài viết</a></li>
+        <li class="breadcrumb-item " aria-current="page"><a href="/bai-viet/@category.MetaTitle-@category.Id" style="font-size:small">@category.Name</a></li>
+        <li class="breadcrumb-item " aria-current="page" style="font-size:small">@Model.Name</li>
+    </ol>
+</nav>
+<div class="content">
+    <div class="content_top">
+        <div class="clear"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            @{Html.RenderAction("PostsCategory", "Category");}
+        </div>
+        <div class="col-lg-9">
+            <div class="slides_container">
+                <a href="#" target="_blank"><img src="@Url.Content(Model.Image)" alt=" " /></a>
+                <h2>@Model.Name</h2>
+                <p>@Model.Detail</p>
+            </div>
+        </div>
+    </div>
+   
+</div>

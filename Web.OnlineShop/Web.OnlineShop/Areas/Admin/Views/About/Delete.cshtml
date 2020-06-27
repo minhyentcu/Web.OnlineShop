@@ -1,0 +1,36 @@
+﻿@model Web.OnlineShop.Entity.About
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Thông tin giới thiệu
+}
+
+<h3>Bạn có muốn xóa thông tin giới thiệu</h3>
+<div>
+    <h4>About</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> |
+            <a class="btn btn-xs btn-primary " href="@Url.Action("Index","About")">Trở lại</a>
+        </div>
+    }
+</div>

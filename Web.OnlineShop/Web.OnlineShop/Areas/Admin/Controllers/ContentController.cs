@@ -1,0 +1,154 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using Web.OnlineShop.Entity;
+using Web.OnlineShop.Common;
+using System.IO;
+using Web.OnlineShop.Service;
+
+namespace Web.OnlineShop.Areas.Admin.Controllers
+{
+
+    [HasPermission(RoleID = "ALL_USER")]
+    public class ContentController : BaseController
+    {
+        private readonly ICategoryService _categoryService;
+        private readonly IContentService _contentService;
+        public ContentController(ICategoryService categoryService, IContentService contentService)
+        {
+            _categoryService = categoryService;
+            _contentService = contentService;
+        }
+        // GET: Admin/Content
+        public ActionResult Index()
+        {
+            var contents = _contentService.Contents();
+            return View(contents);
+        }
+
+        // GET: Admin/Content/Details/5
+        public ActionResult Details(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Content content = _contentService.GetContent(id);
+            if (content == null)
+            {
+                return HttpNotFound();
+            }
+            return View(content);
+        }
+
+        // GET: Admin/Content/Create
+        public ActionResult Create()
+        {
+            ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name");
+            var model = new Content();
+            return View(model);
+        }
+
+        // POST: Admin/Content/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Warranty,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,TopHot,ViewCount,Tag")] Content content, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    //upload file Image Content
+                    var uploadDir = @"~/Upload/Content";
+                    var imageUrl = CommonConstants.SaveImage(file, uploadDir);
+                    content.Image = imageUrl;
+                }
+                var result = await _contentService.Insert(content);
+                if (result)
+                {
+                    return RedirectToAction("Index");
+                }
+                ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
+                return View(content);
+            }
+
+            ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
+            return View(content);
+        }
+
+        // GET: Admin/Content/Edit/5
+        public ActionResult Edit(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Content content = _contentService.GetContent(id);
+            if (content == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
+            return View(content);
+        }
+
+        // POST: Admin/Content/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Warranty,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,TopHot,ViewCount,Tag")] Content content, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                { //upload file Image Content
+                    var uploadDir = @"~/Upload/Content";
+                    var imageUrl = CommonConstants.SaveImage(file, uploadDir);
+                    content.Image = imageUrl;
+                }
+                var result = await _contentService.Update(content);
+                if (result)
+                {
+                    return RedirectToAction("Index");
+                }
+                ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
+                return View(content);
+            }
+            ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
+            return View(content);
+        }
+
+        // GET: Admin/Content/Delete/5
+        public ActionResult Delete(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Content content = _contentService.GetContent(id);
+            if (content == null)
+            {
+                return HttpNotFound();
+            }
+            return View(content);
+        }
+
+        // POST: Admin/Content/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(long id)
+        {
+            var result = await _contentService.Delete(id);
+            if (result)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+    }
+}

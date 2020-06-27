@@ -1,0 +1,198 @@
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.dll.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csc.exe
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csc.exe.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csc.rsp
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csi.exe
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csi.exe.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csi.rsp
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.Managed.Core.targets
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.AppContext.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Collections.Immutable.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Console.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Globalization.Calendars.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.Compression.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.FileSystem.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Net.Http.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Net.Sockets.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Reflection.Metadata.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.ValueTuple.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.XmlDocument.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.XPath.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\vbc.exe
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\vbc.exe.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\vbc.rsp
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\VBCSCompiler.exe
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\roslyn\VBCSCompiler.exe.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Antlr3.Runtime.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Microsoft.Web.Infrastructure.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Newtonsoft.Json.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Helpers.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Mvc.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Optimization.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Razor.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Deployment.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Razor.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Unity.Abstractions.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Unity.Container.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Unity.Mvc5.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\WebGrease.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Helpers.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Mvc.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Optimization.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Razor.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Deployment.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Razor.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Newtonsoft.Json.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Unity.Abstractions.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Unity.Container.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Antlr3.Runtime.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.csprojAssemblyReference.cache
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.csproj.CoreCompileInputs.cache
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.csproj.CopyComplete
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Common.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Entity.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Service.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Common.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Entity.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Entity.dll.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Service.pdb
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Service.dll.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.xml
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.SqlServer.dll
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Common.dll.config
+D:\MVC5\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.dll.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csc.exe
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csc.exe.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csc.rsp
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csi.exe
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csi.exe.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\csi.rsp
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Console.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.Compression.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Net.Http.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.ValueTuple.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\vbc.exe
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\vbc.exe.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\vbc.rsp
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Antlr3.Runtime.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Newtonsoft.Json.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Helpers.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Mvc.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Optimization.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Razor.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Unity.Abstractions.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Unity.Container.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Unity.Mvc5.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Common.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Entity.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Service.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\WebGrease.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Common.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Common.dll.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Entity.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Entity.dll.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Service.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Web.OnlineShop.Service.dll.config
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Helpers.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Mvc.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Optimization.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.Razor.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Newtonsoft.Json.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Unity.Abstractions.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Unity.Container.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.csprojAssemblyReference.cache
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.csproj.CoreCompileInputs.cache
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.csproj.CopyComplete
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.dll
+C:\Users\Admin\OneDrive\Máy tính\Web.OnlineShop\Web.OnlineShop\Web.OnlineShop\obj\Debug\Web.OnlineShop.pdb

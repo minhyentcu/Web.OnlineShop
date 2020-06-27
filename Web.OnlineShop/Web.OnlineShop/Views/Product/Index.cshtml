@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<Web.OnlineShop.Entity.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var products = (IEnumerable<Web.OnlineShop.Entity.Product>)ViewBag.Products;
+}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb"style="font-size:small">
+            <li class="breadcrumb-item">
+                <a style="font-size:small" href="/">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item " aria-current="page">Sản phẩm</li>
+        </ol>
+    </nav>
+
+<div class="content">
+    <div class="">
+        <div class="row">
+            <div class="col-lg-3">
+                @{Html.RenderAction("ProductCategory", "Product");}
+            </div>
+            <div class="col-lg-9">
+                <div class="section group">
+                    @foreach (var item in Model)
+                    {
+                        var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
+                        <div class="grid_1_of_4 images_1_of_4 zoom">
+                            <a href="@url"><img src="@Url.Content(item.Image)" alt="@item.Name" /></a>
+                            <h2 style="font-size:small">@item.Name </h2>
+                            <div class="price-details">
+                            </div>
+                            <br />
+                            <a href="@url" class="btn btn-success">Xem chi tiết</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content_bottom"></div>
+</div>
+<style>
+    .zoom {
+        transition: transform .2s; 
+    }
+        .zoom:hover {
+            transform: scale(1.1); 
+        }
+</style>
+

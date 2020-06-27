@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Web.OnlineShop.Entity.Menu>
+    @{ 
+        var session =  (Web.OnlineShop.Common.UserLogin)Session[Web.OnlineShop.Common.CommonConstants.USER_SESSION];
+    }
+<div class="call">
+</div>
+<div class="account_desc">
+    @if (session == null)
+    {
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+                }
+             </ul>
+      }
+        else
+        {
+            <ul>
+                <li>Xin chào : @session.UserName</li>
+                <li>@Html.ActionLink("Thoát","Logout","Login")</li>
+            </ul>
+        }
+
+    
+
+</div>
+<div class="clear"></div>

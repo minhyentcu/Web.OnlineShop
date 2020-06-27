@@ -1,0 +1,118 @@
+﻿@model Web.OnlineShop.Entity.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var imageUrls = new List<string>();
+    if (ViewBag.ImageUrls != null)
+    {
+        imageUrls = (List<string>)ViewBag.ImageUrls;
+    }
+}
+@section header{
+    Chỉnh sửa sản phẩm
+}
+<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+
+            <lable class="control-lable col-md-2">Miêu tả sản phẩm</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <lable class="control-lable col-md-2">Miêu tả sản phẩm</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <lable class="control-lable col-md-2">Hình ảnh sản phẩm</lable>
+            <div class="col-md-10">
+                <img alt="image" src="@Url.Content(Model.Image)" id="Image" value="@Url.Content(Model.Image)" width="55" />
+                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @hidden = "hidden" } })
+                <input type="file" name="file" id="file" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-lable col-md-2">Hình ảnh miêu tả</lable>
+            <div class="col-md-10">
+                @if (imageUrls.Count > 0)
+                {
+                    foreach (var item in imageUrls)
+                    {
+                        <img alt="image" src="@Url.Content(item)" id="Image" value="@Url.Content(item)" width="55" />
+                    }
+                }
+                <input type="file" name="files" id="files" multiple class="form-control" />
+                @Html.ValidationMessageFor(model => model.MoreImages, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <lable class="control-lable col-md-2">Danh mục sản phẩm</lable>
+            <div class="col-md-10">
+                @Html.DropDownList("ProductCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductCategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-lable col-md-2">Thông số kỹ thuật</lable>
+            <div class="col-md-10">
+                <textarea name="Specifications" id="Specifications">@Html.Raw(HttpUtility.HtmlDecode(Model.Specifications))</textarea>
+                <script>
+                    CKEDITOR.replace('Specifications', {
+                        htmlEncodeOutput: true
+                    });
+                </script>
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <lable class="control-lable col-md-2">Thông tin sản phẩm</lable>
+            <div class="col-md-10">
+                <textarea name="detail" id="detail" value="@Model.Detail">@Html.Raw(HttpUtility.HtmlDecode(Model.Detail)) </textarea>
+                <script>
+                    CKEDITOR.replace('detail', {
+                        htmlEncodeOutput: true
+                    });
+                </script>
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-lable col-md-2">Trạng thái</lable>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Status)
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a class="btn btn-xs btn-primary " href="@Url.Action("Index","Product")">Trở lại</a>
+            </div>
+        </div>
+    </div>
+}

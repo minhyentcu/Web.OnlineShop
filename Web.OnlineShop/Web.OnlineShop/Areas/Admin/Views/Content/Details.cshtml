@@ -1,0 +1,86 @@
+﻿@model Web.OnlineShop.Entity.Content
+
+@{
+    ViewBag.Title = "Thông tin bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Thông tin bài viết
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           <span>Danh mục bài viết</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            <span>Tên bài viết</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            <span>Miêu tả bài viết</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            <span>Hình ảnh bài viết</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            <span>Thông tin bài viết</span>
+        </dt>
+
+        <dd>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+        </dd>
+
+        
+        <dt>
+            <span>Ngày tạo bài viết</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            <span>Ngày chỉnh sửa</span>
+        </dt>
+
+        <dt>
+            <span>Lượt xem</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewCount)
+        </dd>
+    </dl>
+</div>
+<p>
+    <div class="row">
+        <div class="col-sm-pull-1">
+            <a class="btn btn-xs btn-success float-md-left " href="@Url.Action("Edit","Content",new { id=Model.Id })">Chỉnh sửa</a>
+        </div>
+        <div class="col-sm-1">
+            <a class="btn btn-xs btn-danger float-md-left " href="@Url.Action("Index","Content")">Trở lại</a>
+        </div>
+    </div>
+</p>
