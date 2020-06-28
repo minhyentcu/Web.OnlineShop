@@ -3,15 +3,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var products = (IEnumerable<Web.OnlineShop.Entity.Product>)ViewBag.Products;
+    int i = 0;
 }
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb"style="font-size:small">
-            <li class="breadcrumb-item">
-                <a style="font-size:small" href="/">Trang chủ</a>
-            </li>
-            <li class="breadcrumb-item " aria-current="page">Sản phẩm</li>
-        </ol>
-    </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="font-size:small">
+        <li class="breadcrumb-item">
+            <a style="font-size:small" href="/">Trang chủ</a>
+        </li>
+        <li class="breadcrumb-item " aria-current="page">Sản phẩm</li>
+    </ol>
+</nav>
 
 <div class="content">
     <div class="">
@@ -20,32 +21,157 @@
                 @{Html.RenderAction("ProductCategory", "Product");}
             </div>
             <div class="col-lg-9">
-                <div class="section group">
+                <div class="row">
                     @foreach (var item in Model)
                     {
                         var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
-                        <div class="grid_1_of_4 images_1_of_4 zoom">
-                            <a href="@url"><img src="@Url.Content(item.Image)" alt="@item.Name" /></a>
-                            <h2 style="font-size:small">@item.Name </h2>
-                            <div class="price-details">
-                            </div>
-                            <br />
-                            <a href="@url" class="btn btn-success">Xem chi tiết</a>
+                        @*<div class="grid_1_of_4 images_1_of_4  zoom">
+                                <div class="card item-card card-block">
+                                    <img src="@Url.Content(item.Image)" alt="Photo of sunset">
+                                    <div>
+                                        <p class="item-card-title mt-3 ">@item.Name</p>
+                                        <p class="card-text">@item.ProductCategory.Name</p>
+                                    </div>
+
+                                    <div class="price-details">
+                                    </div>
+                                    <br />
+                                    <a href="@url" class="btn btn-success ">Xem chi tiết</a>
+                                </div>
+                            </div>*@
+                        <div class="col-md-6 col-lg-3 mb-4 zoom">
+                            <a href="@url" class="h-100 w-100">
+                                <div class="card card-product h-100 shadow border-0">
+                                    <img class="card-img-top" src="@Url.Content(item.Image)">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div>
+                                            <h6 class="card-title">@item.Name</h6>
+                                            <span class="text-muted small d-block">@item.ProductCategory.Name</span>
+                                        </div>
+                                        <span class="btn btn-success btn-block btn-sm mt-2">Xem Chi Tiết</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     }
                 </div>
+               
             </div>
         </div>
-        
+
     </div>
     <div class="content_bottom"></div>
 </div>
 <style>
     .zoom {
-        transition: transform .2s; 
+        transition: transform .5s;
     }
+
         .zoom:hover {
-            transform: scale(1.1); 
+            transform: scale(1.1);
         }
+
+   /* img {
+        height: 150px;
+        width: 200%;
+    }
+*/
+    .item {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .item-card {
+        transition: 0.5s;
+        cursor: pointer;
+        display: flex;
+    }
+
+        .item-card a {
+            /*  background:;*/
+            /*  color:forestgreen;*/
+            /*  background-color:none;*/
+        }
+
+            .item-card a btn-success {
+                /* background:none;*/
+                color: forestgreen;
+                background-color: none;
+            }
+
+        .item-card p {
+            margin-bottom: 0.5rem;
+        }
+
+    .item-card-title {
+        font-size: 14px;
+        transition: 1s;
+        cursor: pointer;
+        text-align: left;
+        font-weight: bold;
+    }
+
+        .item-card-title i {
+            font-size: 15px;
+            transition: 1s;
+            cursor: pointer;
+            color: #ffa710
+        }
+
+    .card-title i:hover {
+        transform: scale(1.25) rotate(100deg);
+        color: #18d4ca;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .card-text {
+        height: 20px;
+        text-align: left;
+        padding: 0px;
+    }
+
+    .card::before, .card::after, .zoom::before,.zoom::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: scale3d(0, 0, 1);
+        transition: transform .3s ease-out 0s;
+        background: rgba(255, 255, 255, 0.1);
+        content: '';
+        pointer-events: none;
+    }
+
+    .card::before {
+        transform-origin: left top;
+    }
+
+    .card::after {
+        transform-origin: right bottom;
+    }
+
+    .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after , .zoom:hover::before, .zoom:hover::after {
+        transform: scale3d(1, 1, 1);
+    }
+
+    .card {
+    }
+
+    .grid_1_of_4 {
+        border: none;
+        margin: 1.2% 1.1% 0% 0.1%;
+    }
+
+    .images_1_of_4 p {
+        padding: unset;
+    }
+    .card-body h6{
+        color:darkgoldenrod;
+    }
 </style>
 
