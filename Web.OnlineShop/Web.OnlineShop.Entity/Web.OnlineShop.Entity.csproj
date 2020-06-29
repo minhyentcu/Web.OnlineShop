@@ -57,34 +57,13 @@
     <Compile Include="Category.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Content.cs" />
-    <Compile Include="ContentTag.cs" />
     <Compile Include="Feedback.cs" />
     <Compile Include="Footer.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuType.cs" />
-    <Compile Include="Migrations\202006250415300_Update table Productcategory.cs" />
-    <Compile Include="Migrations\202006250415300_Update table Productcategory.designer.cs">
-      <DependentUpon>202006250415300_Update table Productcategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006251040179_Add_field_MetaTitle_Table_Content.cs" />
-    <Compile Include="Migrations\202006251040179_Add_field_MetaTitle_Table_Content.designer.cs">
-      <DependentUpon>202006251040179_Add_field_MetaTitle_Table_Content.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006260845524_Update_tale_contact.cs" />
-    <Compile Include="Migrations\202006260845524_Update_tale_contact.designer.cs">
-      <DependentUpon>202006260845524_Update_tale_contact.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006261648156_Create_table_Role.cs" />
-    <Compile Include="Migrations\202006261648156_Create_table_Role.designer.cs">
-      <DependentUpon>202006261648156_Create_table_Role.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006270246319_Update_Mirgration_Database.cs" />
-    <Compile Include="Migrations\202006270246319_Update_Mirgration_Database.designer.cs">
-      <DependentUpon>202006270246319_Update_Mirgration_Database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006270555032_Add_field_Specifictions.cs" />
-    <Compile Include="Migrations\202006270555032_Add_field_Specifictions.designer.cs">
-      <DependentUpon>202006270555032_Add_field_Specifictions.cs</DependentUpon>
+    <Compile Include="Migrations\202006291650106_Update-database.cs" />
+    <Compile Include="Migrations\202006291650106_Update-database.designer.cs">
+      <DependentUpon>202006291650106_Update-database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineShopDbContext.cs" />
@@ -95,32 +74,16 @@
     <Compile Include="Role.cs" />
     <Compile Include="Slide.cs" />
     <Compile Include="sysdiagram.cs" />
-    <Compile Include="Tag.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserGourp.cs" />
+    <Compile Include="UserGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006250415300_Update table Productcategory.resx">
-      <DependentUpon>202006250415300_Update table Productcategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006251040179_Add_field_MetaTitle_Table_Content.resx">
-      <DependentUpon>202006251040179_Add_field_MetaTitle_Table_Content.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006260845524_Update_tale_contact.resx">
-      <DependentUpon>202006260845524_Update_tale_contact.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006261648156_Create_table_Role.resx">
-      <DependentUpon>202006261648156_Create_table_Role.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006270246319_Update_Mirgration_Database.resx">
-      <DependentUpon>202006270246319_Update_Mirgration_Database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006270555032_Add_field_Specifictions.resx">
-      <DependentUpon>202006270555032_Add_field_Specifictions.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006291650106_Update-database.resx">
+      <DependentUpon>202006291650106_Update-database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

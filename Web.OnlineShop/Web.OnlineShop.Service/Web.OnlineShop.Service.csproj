@@ -60,12 +60,16 @@
     <Compile Include="Implementation\CategoryService.cs" />
     <Compile Include="Implementation\ContactService.cs" />
     <Compile Include="Implementation\ContentService.cs" />
+    <Compile Include="Implementation\SlideService.cs" />
+    <Compile Include="Implementation\UserRoleService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="Implementation\MenuService.cs" />
     <Compile Include="Implementation\ProductCategoryService.cs" />
     <Compile Include="Implementation\ProductService.cs" />
     <Compile Include="Implementation\UserService.cs" />
     <Compile Include="IProductCategoryService.cs" />
+    <Compile Include="ISlideService.cs" />
+    <Compile Include="IUserRoleService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

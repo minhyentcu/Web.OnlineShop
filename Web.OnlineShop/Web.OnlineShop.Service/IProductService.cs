@@ -17,5 +17,7 @@ namespace Web.OnlineShop.Service.Implementation
         Task<bool> Update(Product entity);
         Task<bool> Create(Product entity);
         Task<bool> Delete(long id);
+
+        IEnumerable<Product> Search(string product);
     }
 }

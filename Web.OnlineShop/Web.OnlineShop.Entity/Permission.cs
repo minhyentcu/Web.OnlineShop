@@ -15,7 +15,7 @@
         [Key, Column(Order = 1)]
         public string RoleId { get; set; }
 
-        public virtual UserGourp UserGourp { get; set; }
+        public virtual UserGroup UserGroup { get; set; }
         public virtual Role Role { get; set; }
     }
 }

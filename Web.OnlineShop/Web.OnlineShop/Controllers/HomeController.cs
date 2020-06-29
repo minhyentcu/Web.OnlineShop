@@ -13,8 +13,11 @@ namespace Web.OnlineShop.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IAboutService _aboutService;
         private readonly IContactService _contactService;
+        private readonly IContentService _contentService;
+        private readonly ISlideService _slideService;
         public HomeController(IMenuService menuService, IProductService productService, ICategoryService categoryService
-            , IAboutService aboutService, IContactService contactService, IProductCategoryService productCategoryService)
+            , IAboutService aboutService, IContactService contactService, IProductCategoryService productCategoryService
+            , IContentService contentService, ISlideService slideService)
         {
             _menuService = menuService;
             _productService = productService;
@@ -22,10 +25,14 @@ namespace Web.OnlineShop.Controllers
             _aboutService = aboutService;
             _contactService = contactService;
             _productCategoryService = productCategoryService;
+            _contentService = contentService;
+            _slideService = slideService;
         }
         public ActionResult Index()
         {
             ViewBag.Products = _productService.GetProducts(null).ToList();
+            ViewBag.Contact = _contactService.GetContactById(null);
+            ViewBag.Contents = _contentService.Contents(4).ToList();
             return View();
         }
 
@@ -64,6 +71,14 @@ namespace Web.OnlineShop.Controllers
             ViewBag.productCategorys = _productCategoryService.GetAll();
             ViewBag.contact = _contactService.GetContactById(null);
             var model = _menuService.GetFooter();
+            return PartialView(model);
+        }
+
+
+        [ChildActionOnly]
+        public ActionResult Slide()
+        {
+            var model = _slideService.GetAll();
             return PartialView(model);
         }
     }

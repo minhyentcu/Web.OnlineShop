@@ -15,7 +15,7 @@ using Web.OnlineShop.Service;
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
 
-    [HasPermission(RoleID = "ALL_USER")]
+
     public class ContentController : BaseController
     {
         private readonly ICategoryService _categoryService;
@@ -26,6 +26,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             _contentService = contentService;
         }
         // GET: Admin/Content
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Index()
         {
             var contents = _contentService.Contents();
@@ -33,6 +34,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Content/Details/5
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -48,6 +50,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Content/Create
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name");
@@ -58,6 +61,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/Content/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Warranty,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,TopHot,ViewCount,Tag")] Content content, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -83,6 +87,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Content/Edit/5
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -101,6 +106,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/Content/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Warranty,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,TopHot,ViewCount,Tag")] Content content, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
@@ -124,6 +130,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Content/Delete/5
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -141,6 +148,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/Content/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         public async Task<ActionResult> DeleteConfirmed(long id)
         {
             var result = await _contentService.Delete(id);

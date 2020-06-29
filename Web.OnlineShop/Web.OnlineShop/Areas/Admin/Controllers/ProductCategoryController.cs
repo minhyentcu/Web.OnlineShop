@@ -7,7 +7,6 @@ using Web.OnlineShop.Common;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
-    [HasPermission(RoleID = "ALL_USER")]
     public class ProductCategoryController : BaseController
     {
 
@@ -18,12 +17,14 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             _productCategoryService = productCategoryService;
         }
         // GET: Admin/ProductCategories
+        [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
             return View(_productCategoryService.GetAll());
         }
 
         // GET: Admin/ProductCategories/Details/5
+        [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -39,6 +40,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProductCategories/Create
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Create()
         {
             var model = new ProductCategory();
@@ -48,6 +50,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/ProductCategories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public async Task<ActionResult> Create(ProductCategory productCategory)
         {
             if (ModelState.IsValid)
@@ -64,6 +67,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProductCategories/Edit/5
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -81,6 +85,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/ProductCategories/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public async Task<ActionResult> Edit(ProductCategory productCategory)
         {
             if (ModelState.IsValid)
@@ -96,6 +101,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProductCategories/Delete/5
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -113,6 +119,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/ProductCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         public async Task<ActionResult> DeleteConfirmed(long id)
         {
             var result = await _productCategoryService.Delete(id);

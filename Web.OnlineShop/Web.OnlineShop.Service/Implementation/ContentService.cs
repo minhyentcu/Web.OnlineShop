@@ -15,8 +15,12 @@ namespace Web.OnlineShop.Service.Implementation
         {
             _context = context;
         }
-        public IEnumerable<Content> Contents()
+        public IEnumerable<Content> Contents(int count = 0)
         {
+            if (count > 0)
+            {
+                return _context.Contents.OrderByDescending(x => x.CreatedDate).Take(count);
+            }
             return _context.Contents;
         }
 

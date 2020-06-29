@@ -15,12 +15,14 @@ namespace Web.OnlineShop.Entity
         [Display(Name = "Thứ tự hiển thị")]
         public int? DisplayOrder { get; set; }
 
+        [Required(ErrorMessage = ("Tiêu đề không được bỏ trống"))]
         [StringLength(250)]
-        [Display(Name = "Liên kết")]
-        public string Link { get; set; }
+        [Display(Name = "Tiêu đề Slide")]
+        public string Name { get; set; }
 
         [StringLength(250)]
         [Display(Name = "Miêu tả")]
+        [Required(ErrorMessage = ("Miêu tả không được bỏ trống"))]
         public string Descripstion { get; set; }
 
         [StringLength(50)]
@@ -33,6 +35,7 @@ namespace Web.OnlineShop.Entity
         [Display(Name = "Ngày tạo")]
         public DateTime? CreatedDate { get; set; }
         [Display(Name = "Trạng thái")]
+        //[Required(ErrorMessage = ("Trạng thái không được bỏ trống"))]
         public bool? Status { get; set; }
     }
 }

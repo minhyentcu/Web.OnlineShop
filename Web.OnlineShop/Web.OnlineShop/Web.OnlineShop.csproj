@@ -150,10 +150,13 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserGroupController.cs" />
     <Compile Include="Areas\Admin\Data\LoginModel.cs" />
     <Compile Include="Areas\Admin\Data\ProductViewModel.cs" />
     <Compile Include="Areas\Admin\Data\RegisterModel.cs" />
+    <Compile Include="Areas\Admin\Data\ResetPasswordViewModel.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -610,6 +613,7 @@
     <Content Include="Assets\Client\js\jquery-1.7.2.min.js" />
     <Content Include="Assets\Client\js\jquery.accordion.js" />
     <Content Include="Assets\Client\js\jquery.easing.js" />
+    <Content Include="Assets\Client\js\jssor.slider-28.0.0.min.js" />
     <Content Include="Assets\Client\js\move-top.js" />
     <Content Include="Assets\Client\js\script.js" />
     <Content Include="Assets\Client\js\slides.min.jquery.js" />
@@ -706,6 +710,20 @@
     <Content Include="Areas\Admin\Views\Contact\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\ResetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\UserGroupRole.cshtml" />
+    <Content Include="Areas\Admin\Views\UserGroup\EditRole.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -719,7 +737,14 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Upload\banner.png" />
     <Content Include="Upload\br1.jpg" />
+    <Content Include="Upload\high-rise-building.jpg" />
     <Content Include="Upload\images.jpg" />
+    <Content Include="Upload\img\double-tail-spin.svg" />
+    <Content Include="Upload\img\faded-monaco-scenery-evening-dark-picjumbo-com-image.jpg" />
+    <Content Include="Upload\img\px-action-athlete-athletes-848618-image.jpg" />
+    <Content Include="Upload\img\px-beach-daylight-fun-1430675-image.jpg" />
+    <Content Include="Upload\img\px-bloom-blossom-flora-65219-image.jpg" />
+    <Content Include="Upload\img\px-fun-man-person-2361598-image.jpg" />
     <Content Include="Upload\nhung-ban-in-do-hoa-2.jpg" />
     <Content Include="Upload\Product\feature-pic1.jpg" />
     <Content Include="Upload\trang-tri-phong-khach-ngay-tet-3.jpg" />
@@ -752,12 +777,14 @@
     <Content Include="Views\Shared\PostsCategory.cshtml" />
     <Content Include="Views\Category\Detail.cshtml" />
     <Content Include="Views\Shared\GoogleMap.cshtml" />
+    <Content Include="Views\Shared\Slide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Models\" />
     <Folder Include="Upload\Content\" />
+    <Folder Include="Upload\Slide\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

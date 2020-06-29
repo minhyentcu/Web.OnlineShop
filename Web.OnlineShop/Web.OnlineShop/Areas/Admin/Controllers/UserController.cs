@@ -15,10 +15,12 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         private readonly IUserService _userService;
+        private readonly IUserRoleService _userRoleService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IUserRoleService userRoleService)
         {
             _userService = userService;
+            _userRoleService = userRoleService;
         }
 
         // GET: Admin/User
@@ -45,6 +47,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
             var user = new User();
             return View(user);
         }
@@ -75,6 +78,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(long id)
         {
+            ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
             var user = await _userService.GetUserById(id);
             if (user == null)
             {
@@ -103,10 +107,12 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("", "Cập nhật thông tin người dùng thất bại.");
+                ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
                 return View(nameof(Index));
             }
             catch
             {
+                ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
                 return View(nameof(Index));
             }
         }
@@ -145,6 +151,21 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             {
                 return View(nameof(Index));
             }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> UserGroup()
+        {
+            var model = new UserGroup();
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> UserGroup(UserGroup group)
+        {
+
+            var model = new UserGroup();
+            return View(model);
         }
     }
 }

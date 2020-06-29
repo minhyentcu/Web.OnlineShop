@@ -43,12 +43,11 @@
                 {@Html.ValidationSummary(false, "",new { @class = "text-danger" })
                                 @Html.AntiForgeryToken()
                                                 <div class="form-group">
-                                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-lg", @autofocus = "autofocus" })
+                                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-lg", @autofocus = "autofocus" ,@placeholder="Tên đăng nhập" })
 
                                                 </div>
                                                                 <div class="form-group">
-                                                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-lg",@type="password" })
-                                                                    @*@Html.ValidationSummary(false, "", "error")*@
+                                                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control form-control-lg",@type="password", @placeholder = "Mật khẩu" })
                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <label class="custom-control custom-checkbox">
@@ -63,7 +62,7 @@
                     <a href="/dang-ky" class="footer-link">Tạo tài khoản</a>
                 </div>
                 <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Lấy lại mật khẩu</a>
+                    <a href="/quen-mat-khau" class="footer-link">Quên mật khẩu?</a>
                 </div>
             </div>
         </div>

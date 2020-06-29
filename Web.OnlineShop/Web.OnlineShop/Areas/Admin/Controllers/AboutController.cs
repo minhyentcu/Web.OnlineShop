@@ -14,8 +14,8 @@ using Web.OnlineShop.Common;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
-    [HasPermission(RoleID = "ALL_USER")]
-    public class AboutController : Controller
+
+    public class AboutController : BaseController
     {
         private readonly IAboutService _aboutService;
         public AboutController(IAboutService aboutService)
@@ -23,13 +23,15 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             _aboutService = aboutService;
         }
         // GET: Admin/About
-        public  ActionResult Index()
+        [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
+        public ActionResult Index()
         {
             return View(_aboutService.GetAbouts());
         }
 
+        [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         // GET: Admin/About/Details/5
-        public  ActionResult Details(long? id)
+        public ActionResult Details(long? id)
         {
             if (id == null)
             {
@@ -43,6 +45,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             return View(about);
         }
 
+        [HasPermission(RoleID = "ALL_ROLE,INSERT_ROLE")]
         // GET: Admin/About/Create
         public ActionResult Create()
         {
@@ -51,10 +54,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // POST: Admin/About/Create
-
+        [HasPermission(RoleID = "ALL_ROLE,INSERT_ROLE")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult>  Create([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,ViewCount")] About about, HttpPostedFileBase file)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,ViewCount")] About about, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +67,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                     var imageUrl = CommonConstants.SaveImage(file, uploadDir);
                     about.Image = imageUrl;
                 }
-                var result =await _aboutService.Insert(about);
+                var result = await _aboutService.Insert(about);
                 if (result)
                 {
                     return RedirectToAction("Index");
@@ -74,7 +77,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
 
             return View(about);
         }
-
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         // GET: Admin/About/Edit/5
         public ActionResult Edit(long? id)
         {
@@ -90,10 +93,11 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             return View(about);
         }
 
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         // POST: Admin/About/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult>  Edit([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,ViewCount")] About about, HttpPostedFileBase file)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Image,CategoryId,Detail,Status,CreatedDate,CreatedBy,ModifiedDate,ModifileBy,MetaKeywords,MetaDescription,ViewCount")] About about, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +108,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                     var imageUrl = CommonConstants.SaveImage(file, uploadDir);
                     about.Image = imageUrl;
                 }
-                var result =await _aboutService.Update(about);
+                var result = await _aboutService.Update(about);
                 if (result)
                 {
                     return RedirectToAction("Index");
@@ -114,6 +118,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             return View(about);
         }
 
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         // GET: Admin/About/Delete/5
         public ActionResult Delete(long? id)
         {
@@ -128,11 +133,11 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             }
             return View(about);
         }
-
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         // POST: Admin/About/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult>  DeleteConfirmed(long id)
+        public async Task<ActionResult> DeleteConfirmed(long id)
         {
             var result = await _aboutService.Delete(id);
             if (result)

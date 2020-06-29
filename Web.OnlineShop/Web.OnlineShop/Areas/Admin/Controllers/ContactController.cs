@@ -13,7 +13,6 @@ using Web.OnlineShop.Common;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
-    [HasPermission(RoleID = "ALL_USER")]
     public class ContactController : BaseController
     {
         private readonly IContactService _contactService;
@@ -22,6 +21,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             _contactService = contactService;
         }
         // GET: Admin/Contacts
+        [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
             var models = _contactService.Contacts();
@@ -29,6 +29,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts/Details/5
+        [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -42,14 +43,14 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             }
             return View(contact);
         }
-
+        [HasPermission(RoleID = "ALL_ROLE,INSERT_ROLE")]
         // GET: Admin/Contacts/Create
         public ActionResult Create()
         {
             var model = new Contact();
             return View(model);
         }
-
+        [HasPermission(RoleID = "ALL_ROLE,INSERT_ROLE")]
         // POST: Admin/Contacts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -68,6 +69,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             return View(contact);
         }
 
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         // GET: Admin/Contacts/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -84,7 +86,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // POST: Admin/Contacts/Edit/5
-
+        [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit( Contact contact)
@@ -102,6 +104,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts/Delete/5
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -119,6 +122,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             var result = await _contactService.Delete(id);

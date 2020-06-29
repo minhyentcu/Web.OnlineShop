@@ -14,6 +14,24 @@ namespace Web.OnlineShop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                 name: "Reset password",
+                 url: "reset-password-{id}",
+                 defaults: new { controller = "Login", action = "ResetPassword", id = UrlParameter.Optional }, namespaces: new[] { "Web.OnlineShop.Controllers" }
+            ).DataTokens = new RouteValueDictionary(new { area = "Admin" });
+
+            routes.MapRoute(
+            name: "Forgot password",
+            url: "quen-mat-khau",
+            defaults: new { controller = "Login", action = "ForgotPassword", id = UrlParameter.Optional }, namespaces: new[] { "Web.OnlineShop.Controllers" }
+         ).DataTokens = new RouteValueDictionary(new { area = "Admin" });
+
+            routes.MapRoute(
+             name: "Product Search",
+             url: "san-pham/tim-kiem",
+             defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional }, namespaces: new[] { "Web.OnlineShop.Controllers" }
+         );
+
+            routes.MapRoute(
               name: "About",
               url: "gioi-thieu",
               defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional }, namespaces: new[] { "Web.OnlineShop.Controllers" }

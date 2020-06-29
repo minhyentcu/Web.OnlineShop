@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Web.OnlineShop.Entity;
 
@@ -27,5 +28,13 @@ namespace Web.OnlineShop.Service
         IEnumerable<string> GetPermissions(string username);
 
         string GetGroupUser(string username);
+
+        Task<string> ForgotPassword(string email);
+
+        Task<User> GetUserByCode(string id);
+
+        Task<bool> ResetPassword(string code, string password);
+
+        
     }
 }

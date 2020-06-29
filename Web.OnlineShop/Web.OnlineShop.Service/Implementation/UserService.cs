@@ -69,6 +69,24 @@ namespace Web.OnlineShop.Service.Implementation
             return result > 0;
         }
 
+        public async Task<string> ForgotPassword(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            if (user != null)
+            {
+                var resetCode = Guid.NewGuid().ToString();
+                CommonConstants.SendVerificationLinkEmail(email, resetCode);
+                user.ResetCodePassword = resetCode;
+                _context.Configuration.ValidateOnSaveEnabled = false;
+                await _context.SaveChangesAsync();
+                return resetCode;
+            }
+            return string.Empty;
+
+        }
+
+
+
         public async Task<bool> UpdateAsync(User entity)
         {
             try
@@ -134,6 +152,31 @@ namespace Web.OnlineShop.Service.Implementation
         public string GetGroupUser(string username)
         {
             return _context.Users.FirstOrDefault(x => x.UserName == username).GroupId;
+        }
+
+        public async Task<User> GetUserByCode(string id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.ResetCodePassword == id);
+        }
+
+        public async Task<bool> ResetPassword(string code, string password)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.ResetCodePassword == code);
+                if (user != null)
+                {
+                    user.Password = Encryptor.MD5Hash(password);
+                    user.ResetCodePassword = string.Empty;
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

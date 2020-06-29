@@ -107,5 +107,10 @@ namespace Web.OnlineShop.Service.Implementation
                 return false;
             }
         }
+
+        public IEnumerable<Product> Search(string product)
+        {
+            return  _context.Products.Where(x => x.Name.Contains(product));
+        }
     }
 }

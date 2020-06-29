@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Web.OnlineShop.Common;
 using Web.OnlineShop.Service;
 using Web.OnlineShop.Service.Implementation;
@@ -58,5 +53,11 @@ namespace Web.OnlineShop.Controllers
             return View(product);
         }
 
+        [HttpGet]
+        public ActionResult Search(string searchProduct)
+        {
+            var products = _productService.Search(searchProduct);
+            return View("Index", products);
+        }
     }
 }

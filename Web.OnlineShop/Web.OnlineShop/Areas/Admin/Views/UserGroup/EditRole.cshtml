@@ -1,0 +1,142 @@
+﻿@model Web.OnlineShop.Entity.Permission
+
+@{
+    ViewBag.Title = "EditRole";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var roles = (IEnumerable<Web.OnlineShop.Entity.Role>)ViewBag.RoleIds;
+    var permissions = (IEnumerable<Web.OnlineShop.Entity.Permission>)ViewBag.Permissions;
+}
+
+@section header{
+    Phân quyền người dùng
+}
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Permission</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserGroupId, "UserGroupId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("UserGroupId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserGroupId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RoleId, "RoleId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        <h2>@ViewBag.Title</h2>
+
+        <hr />
+
+        <h5><strong>Các quyền hiện tại của nhóm người dùng @ViewBag.GroupId</strong> </h5>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Quyền</th>
+
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @if (permissions.Count() > 0)
+
+                {
+
+                    foreach (var item in permissions)
+
+                    {
+
+                        <tr>
+
+                            <td>@item.RoleId</td>
+
+                            <td>
+
+                                <form action="@Url.Action("DeleteRoleFromUser", new { UserId = item.UserGroupId, RoleId = item.RoleId })" method="post">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <button type="submit" class="btn btn-xs btn-danger">Gỡ bỏ</button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <tr>
+
+                        <td colspan="2">
+
+                            <p>Thành viên chưa có quyền nào</p>
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+        <h5><strong>Thêm quyền cho thành viên này:</strong></h5>
+
+        <form action="@Url.Action("AddToRole")" method="post">
+
+            @*<input type="hidden" name="userGroupId" value="@Url.RequestContext.RouteData.Values["Id"]" />*@
+            <input type="hidden" name="userGroupId" value="@ViewBag.GroupId" />
+            @Html.AntiForgeryToken()
+
+            @Html.ListBox("RoleId", null, new { @class = "form-control", multiple = "multiple" })
+
+            <div class="form-group">
+
+                <br />
+
+                <button type="submit" class="btn btn-primary">Thêm </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

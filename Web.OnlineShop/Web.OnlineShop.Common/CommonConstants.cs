@@ -4,6 +4,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Net.Mail;
+using System.Net;
 
 namespace Web.OnlineShop.Common
 {
@@ -74,6 +76,58 @@ namespace Web.OnlineShop.Common
                 xElement.Add(new XElement("Image", item));
             }
             return xElement.ToString();
+        }
+
+        public static void SendVerificationLinkEmail(string emailID, string activationCode)
+        {
+            try
+            {
+                var verifyUrl = "/reset-password-" + activationCode;
+                var link = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.PathAndQuery, verifyUrl);
+
+                var fromEmail = new MailAddress("phamminhyen2d@gmail.com", "Fogot Password");
+                var toEmail = new MailAddress(emailID);
+                var fromEmailPassword = "Ngoalong123";
+                string subject = "Forgot password";
+                string body = "Nhấn vào link để reset password " + "<a href=" + link + ">Reset password link</a>";
+
+                //var smtp = new SmtpClient
+                //{
+                //    Host = "smtp.gmail.com",
+                //    Port = 587,
+                //    EnableSsl = true,
+                //    DeliveryMethod = SmtpDeliveryMethod.Network,
+                //    UseDefaultCredentials = false,
+                //    Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+
+                //};
+
+
+                var message = new MailMessage(fromEmail, toEmail)
+                {
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true
+                };
+                using (SmtpClient client = new SmtpClient())
+                {
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("phamminhyen2d@gmail.com", fromEmailPassword);
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                    client.Send(message);
+                }
+                //smtp.Send(message);
+            }
+
+            catch (Exception)
+            {
+
+                
+            }
         }
     }
 }

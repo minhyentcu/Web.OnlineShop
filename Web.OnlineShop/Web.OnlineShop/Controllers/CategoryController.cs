@@ -18,7 +18,8 @@ namespace Web.OnlineShop.Controllers
         public ActionResult Index(long id)
         {
             var model = _categoryService.GetContentsById(id);
-            ViewBag.category = _categoryService.GetCategoryById(model.First().CategoryId);
+            ViewBag.category = _categoryService.GetCategoryById(id);
+
             return View(model);
         }
 

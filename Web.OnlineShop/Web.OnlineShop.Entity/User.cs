@@ -48,6 +48,8 @@ namespace Web.OnlineShop.Entity
         [StringLength(20)]
         public string GroupId { get; set; }
 
-        public virtual UserGourp UserGourp { get; set; }
+        public string ResetCodePassword { get; set; }
+
+        public virtual UserGroup UserGroup { get; set; }
     }
 }

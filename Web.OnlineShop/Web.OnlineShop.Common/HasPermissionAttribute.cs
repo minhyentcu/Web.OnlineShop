@@ -8,8 +8,9 @@ using System.Web.Mvc;
 
 namespace Web.OnlineShop.Common
 {
-    public class HasPermissionAttribute: AuthorizeAttribute
+    public class HasPermissionAttribute : AuthorizeAttribute
     {
+       
         public string RoleID { set; get; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
@@ -18,17 +19,20 @@ namespace Web.OnlineShop.Common
             {
                 return false;
             }
-
+            var roles = this.RoleID.Split(',');
             List<string> privilegeLevels = this.GetCredentialByLoggedInUser(session.UserName); // Call another method to get rights of the user from DB
 
-            if (privilegeLevels.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP)
-            {
+            if (session.GroupID == CommonConstants.ADMIN_GROUP)
                 return true;
-            }
-            else
+
+            foreach (var item in roles)
             {
-                return false;
+                if (privilegeLevels.Contains(item))
+                {
+                    return true;
+                }
             }
+            return false;
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {

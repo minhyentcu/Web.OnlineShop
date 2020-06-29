@@ -7,7 +7,7 @@ using Web.OnlineShop.Common;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
-    [HasPermission(RoleID = "ALL_USER")]
+    [HasPermission(RoleID = "ALL_ROLE,EDIT,INSERT,VIEW")]
     public class HomeController : BaseController
     {
         // GET: Admin/Home
