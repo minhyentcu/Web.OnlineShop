@@ -35,7 +35,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Hình ảnh</label>
             <div class="col-md-10">
-                <input type="file" name="file" id="file" class="form-control" />
+                <input type="file" name="file" id="file" class="form-control" required data-msg-required="Hình ảnh không được bỏ trống" />
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,3 +70,9 @@
         </div>
     </div>
 }
+<script>
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Trường này không được để trống",
+
+    });
+</script>

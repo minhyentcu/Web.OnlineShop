@@ -15,8 +15,12 @@ namespace Web.OnlineShop.Service.Implementation
         {
             _context = context;
         }
-        public IEnumerable<Contact> Contacts()
+        public IEnumerable<Contact> Contacts(bool status = true)
         {
+            if (status)
+            {
+                return _context.Contacts.Where(x => x.Status == true);
+            }
             return _context.Contacts;
         }
 

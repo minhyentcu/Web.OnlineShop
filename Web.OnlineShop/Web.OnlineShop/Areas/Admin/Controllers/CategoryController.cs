@@ -13,11 +13,9 @@ using Web.OnlineShop.Service;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
-    
+
     public class CategoryController : BaseController
     {
-        private OnlineShopDbContext db = new OnlineShopDbContext();
-
         private readonly ICategoryService _categoryService;
         public CategoryController(ICategoryService categoryService)
         {
@@ -28,7 +26,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // GET: Admin/Category
         public ActionResult Index()
         {
-            return View(_categoryService.GetCategories());
+            return View(_categoryService.GetCategories(false));
         }
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         // GET: Admin/Category/Details/5
@@ -61,12 +59,16 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                category.MetaTitle = CommonConstants.ConvertToUnSign(category.Name);
-                db.Categories.Add(category);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var result = await _categoryService.Insert(category);
+                if (result)
+                {
+                    SetAlert("Thêm danh mục bài viết thành công", "success");
+                    return RedirectToAction("Index");
+                }
+                SetAlert("Thêm danh mục bài viết không thành công", "error");
+                return View(category);
             }
-
+            SetAlert("Thêm danh mục bài viết không thành công", "error");
             return View(category);
         }
 
@@ -78,7 +80,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = await db.Categories.FindAsync(id);
+            Category category = _categoryService.GetCategoryById(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -95,21 +97,27 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var result = await _categoryService.Update(category);
+                if (result)
+                {
+                    SetAlert("Cập nhật danh mục bài viết thành công", "success");
+                    return RedirectToAction("Index");
+                }
+                SetAlert("Cập nhật danh mục bài viết không thành công", "error");
+                return View(category);
             }
+            SetAlert("Cập nhật danh mục bài viết không thành công", "error");
             return View(category);
         }
         [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
         // GET: Admin/Category/Delete/5
-        public async Task<ActionResult> Delete(long? id)
+        public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = await db.Categories.FindAsync(id);
+            Category category = _categoryService.GetCategoryById(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -122,9 +130,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(long id)
         {
-            Category category = await db.Categories.FindAsync(id);
-            db.Categories.Remove(category);
-            await db.SaveChangesAsync();
+            var result = await _categoryService.Delete(id);
+            if (result)
+            {
+                SetAlert("Xoá danh mục bài viết thành công", "success");
+                return RedirectToAction("Index");
+            }
+            SetAlert("Xoá danh mục bài viết không thành công", "error");
             return RedirectToAction("Index");
         }
     }

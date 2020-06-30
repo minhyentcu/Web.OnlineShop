@@ -63,13 +63,16 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 {
                     user.Password = Encryptor.MD5Hash(user.Password);
                     await _userService.CreateAsync(user);
+                    SetAlert("Thêm người dùng mới thành công", "success");
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("", "Thêm người dùng thất bại.");
+                SetAlert("Thêm người dùng mới không thành công", "error");
                 return View(nameof(Index));
             }
             catch
             {
+                SetAlert("Thêm người dùng mới không thành công", "error");
                 return View(nameof(Index));
             }
         }
@@ -91,27 +94,31 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         // POST: Admin/User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(User model)
+        public async Task<ActionResult>  Edit(User model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var user = _userService.GetUserById(model.Id);
-                    if (user == null)
+                   var result=await  _userService.UpdateAsync(model);
+                    if (result)
                     {
-                        return HttpNotFound();
+                        SetAlert("Cập nhật người dùng thành công", "success");
+                        return RedirectToAction("Index");
                     }
-                    model.Password = Encryptor.MD5Hash(model.Password);
-                    _userService.UpdateAsync(model);
-                    return RedirectToAction("Index");
+                    SetAlert("Cập nhật người dùng không thành công", "error");
+                    ModelState.AddModelError("", "Cập nhật thông tin người dùng thất bại.");
+                    ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
+                    return View(nameof(Index));
                 }
+                SetAlert("Cập nhật người dùng không thành công", "error");
                 ModelState.AddModelError("", "Cập nhật thông tin người dùng thất bại.");
                 ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
                 return View(nameof(Index));
             }
             catch
             {
+                SetAlert("Cập nhật người dùng không thành công", "error");
                 ViewBag.GroupId = new SelectList(_userRoleService.GetUserGroups(), "Id", "Name");
                 return View(nameof(Index));
             }
@@ -139,16 +146,19 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _userService.DeleteAsync(id);
                 if (result)
                 {
+                    SetAlert("Xóa người dùng thành công", "success");
                     return RedirectToAction("Index");
                 }
                 else
                 {
+                    SetAlert("Xóa người dùng không thành công", "error");
                     ModelState.AddModelError("", "Xóa thông tin người dùng thất bại.");
                     return View(nameof(Index));
                 }
             }
             catch
             {
+                SetAlert("Xóa người dùng không thành công", "error");
                 return View(nameof(Index));
             }
         }

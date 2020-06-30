@@ -25,20 +25,6 @@
                     @foreach (var item in Model)
                     {
                         var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
-                        @*<div class="grid_1_of_4 images_1_of_4  zoom">
-                                <div class="card item-card card-block">
-                                    <img src="@Url.Content(item.Image)" alt="Photo of sunset">
-                                    <div>
-                                        <p class="item-card-title mt-3 ">@item.Name</p>
-                                        <p class="card-text">@item.ProductCategory.Name</p>
-                                    </div>
-
-                                    <div class="price-details">
-                                    </div>
-                                    <br />
-                                    <a href="@url" class="btn btn-success ">Xem chi tiết</a>
-                                </div>
-                            </div>*@
                         <div class="col-md-6 col-lg-3 mb-4 zoom">
                             <a href="@url" class="h-100 w-100">
                                 <div class="card card-product h-100 shadow border-0">
@@ -55,7 +41,6 @@
                         </div>
                     }
                 </div>
-               
             </div>
         </div>
 
@@ -70,12 +55,6 @@
         .zoom:hover {
             transform: scale(1.1);
         }
-
-   /* img {
-        height: 150px;
-        width: 200%;
-    }
-*/
     .item {
         padding-left: 5px;
         padding-right: 5px;

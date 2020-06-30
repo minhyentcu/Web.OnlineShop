@@ -9,9 +9,17 @@
     }
     var contact = (Web.OnlineShop.Entity.Contact)ViewBag.Contact;
     var contents = (List<Web.OnlineShop.Entity.Content>)ViewBag.Contents;
+    var feedbacks = (List<Web.OnlineShop.Entity.Feedback>)ViewBag.Feedbacks;
+    var i = 0;
+    var j = 0;
 
 }
+@*<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />*@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" type="text/css" media="all">
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 @section slide{
 
     <div class="header_slide">
@@ -19,21 +27,11 @@
             @{Html.RenderAction("ProductCategory", "Product");}
         </div>
         <div class="header_bottom_right" id=" slide">
-            @*<img src="~/Upload/banner.png" style="width:100%;height:100%;display:block" />*@
             @{ Html.RenderAction("Slide", "Home");}
         </div>
         <div class="clear"></div>
     </div>
 }
-@*<div class="content">
-    <div class="section-title-cus mb-20">
-        <span class="group-icon">
-            <i class="fas fa-door-open"></i>
-        </span>
-        <h2>MINH HOANG DL</h2>
-    </div>
-    @{ Html.RenderAction("Slide", "Home");}
-</div>*@
 
 <div class="content">
     <div class="section-title-cus mb-20">
@@ -42,163 +40,356 @@
         </span>
         <h2>MINH HOANG DL</h2>
     </div>
-    </div>
-    <section class="mb-50" style="background-image: url('/Upload/high-rise-building.jpg') ;">
-        <div style="background-color: rgba(0, 0, 0, .6);">
-            <div class="container py-5">
-                <div class="row py-4">
-                    <div class="col-lg-6 mb-4">
-                        <h2 class="font-weight-bold text-white"><span style="color: #ed1b24">MINH HOÀNG DL</span> - Nơi tạo dựng vẻ đẹp ngôi nhà !</h2>
-                        <p class="text-white">Chuyên thiết kế, thi công và lắp ráp cửa nhựa - cửa nhôm cao cấp. Chính sách chiết khấu giá tốt đối với khách hàng thi công số lượng lớn!</p>
-                    </div>
-                    <div class="col-lg-6 text-lg-right">
-                        <p class="text-white">
-                            <i class="text-white mr-10">Hỗ trợ khách hàng 24/24</i>
-                            <a href="/home/contact" class="btn btn-danger px-5" style="background-color:#ed1b24">LIÊN HỆ</a>
-                        </p>
-                        <p class="h2 text-white mt-40">
-                            <a href="tel:0931222775" class="text-white">@contact.Phone</a> -
-                            <a href="tel:0986909997" class="text-white">@contact.PhoneSecond</a>
-                        </p>
-                    </div>
+</div>
+<section class="mb-50" style="background-image: url('/Upload/high-rise-building.jpg') ;">
+    <div style="background-color: rgba(0, 0, 0, .6);">
+        <div class="container py-5">
+            <div class="row py-4">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="font-weight-bold text-white"><span style="color: #ed1b24">MINH HOÀNG DL</span> - Nơi tạo dựng vẻ đẹp ngôi nhà !</h2>
+                    <p class="text-white">Chuyên thiết kế, thi công và lắp ráp cửa nhựa - cửa nhôm cao cấp. Chính sách chiết khấu giá tốt đối với khách hàng thi công số lượng lớn!</p>
+                </div>
+                <div class="col-lg-6 text-lg-right">
+                    <p class="text-white">
+                        <i class="text-white mr-10">Hỗ trợ khách hàng 24/24</i>
+                        <a href="/home/contact" class="btn btn-danger px-5" style="background-color:#ed1b24">LIÊN HỆ</a>
+                    </p>
+                    <p class="h2 text-white mt-40">
+                        <a href="tel:0931222775" class="text-white">@contact.Phone</a> -
+                        <a href="tel:0986909997" class="text-white">@contact.PhoneSecond</a>
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="content">
-        <div class="section-title-cus mb-20">
-            <span class="group-icon">
-                <i class="fas fa-door-open"></i>
-            </span>
-            <h2>Sản phẩm mới</h2>
-        </div>
-        <div class="section group">
-            @if (products.Count() > 0)
-            {
-                foreach (var item in products)
-                {
-                    var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
-                    <div class="grid_1_of_4 images_1_of_4 zoom">
-                        @if (item.Image != null)
-                        {
-                            <a href="@url"><img src="@Url.Content(item.Image)" alt="@item.Name" /></a>
-                        }
-                        <h2 style="font-size:small">@item.Name </h2>
-                        <p style="color:blueviolet">@item.ProductCategory.Name</p>
-                        <div class="price-details">
-                        </div>
-                        <br />
-                        <a href="@url" class=" btn btn-success"> Xem chi tiết</a>
-                    </div>
-                }
-            }
-
-        </div>
     </div>
-    <div class="content">
-        <div class="section-title-cus mb-20">
-            <span class="group-icon">
-                <i class="fas fa-door-open"></i>
-            </span>
-            <h2>Tin mới nhất</h2>
-        </div>
-        <div class="section group">
-            @foreach (var item in contents)
+</section>
+
+<div class="content">
+    <div class="section-title-cus mb-20">
+        <span class="group-icon">
+            <i class="fas fa-door-open"></i>
+        </span>
+        <h2>Sản phẩm mới</h2>
+    </div>
+    <div class="section group">
+        @if (products.Count() > 0)
+        {
+            foreach (var item in products)
             {
-                var url = "/bai-viet/" + item.Category.MetaTitle + "/" + item.MetaTitle + "-" + item.Id;
-                <div class="grid_1_of_4 images_1_of_4 zoom">
-                    <a href="@url"><img src="@Url.Content(item.Image)" alt="@item.Name" /></a>
-                    <h2 style="font-size:small">@item.Name </h2>
-                    <div class="price-details">
-                    </div>
-                    <br />
-                    <a href="@url" class="btn btn-success">Xem chi tiết</a>
+                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
+                <div class="col-md-6 col-lg-3 mb-4 zoom">
+                    <a href="@url" class="h-100 w-100">
+                        <div class="card card-product h-100 shadow border-0">
+                            <img class="card-img-top" src="@Url.Content(item.Image)">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h6 class="card-title">@item.Name</h6>
+                                    <span class="text-muted small d-block">@item.ProductCategory.Name</span>
+                                </div>
+                                <span class="btn btn-success btn-block btn-sm mt-2" style="text-decoration:inherit">Xem Chi Tiết</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             }
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="section-title-cus mb-20">
-            <span class="group-icon">
-                <i class="fas fa-door-open"></i>
-            </span>
-            <h2>Liên hệ</h2>
-        </div>
-        <div class="contact"></div>
-    </div>
-
-
-    <style>
-        .slide {
-            width: 600px;
-            height: 300px;
         }
 
-        .section-title-cus {
-            border-top: 3px solid #ed1b24;
-            position: relative;
-            margin-bottom: 20px;
+    </div>
+</div>
+<div class="content">
+    <div class="section-title-cus mb-20">
+        <span class="group-icon">
+            <i class="fas fa-door-open"></i>
+        </span>
+        <h2>Tin mới nhất</h2>
+    </div>
+    <div class="section group">
+        @foreach (var item in contents)
+        {
+            var url = "/bai-viet/" + item.Category.MetaTitle + "/" + item.MetaTitle + "-" + item.Id;
+            <div class="grid_1_of_4 images_1_of_4 zoom">
+                <a href="@url"><img src="@Url.Content(item.Image)" alt="@item.Name" /></a>
+                <h2 style="font-size:small">@item.Name </h2>
+                <div class="price-details">
+                </div>
+                <br />
+                <a href="@url" class="btn btn-success">Xem chi tiết</a>
+            </div>
         }
+    </div>
+</div>
+<div class="content">
+    <div class="section-title-cus mb-20">
+        <span class="group-icon">
+            <i class="fas fa-door-open"></i>
+        </span>
+        <h2>Ý kiến khách hàng</h2>
+    </div>
+</div>
+<div class="section group">
+    <div class="row">
+        <div class=" col-lg-6">
+            <div id="myCarousel" class="carousel slide slidepro" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    @if (feedbacks.Count > 0)
+                    {
+                        foreach (var item in feedbacks)
+                        {
+                            if (j == 0)
+                            {
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            }
+                            else
+                            {
+                                <li data-target="#myCarousel" data-slide-to="@j"></li>
+                            }
+                            j++;
+                        }
+                    }
+                </ol>
 
-            .section-title-cus h2 {
-                margin: 0;
-                text-transform: uppercase;
-                color: #fff;
-                background-color: #ed1b24;
-                font-size: 15px;
-                display: inline-block;
-                padding-left: 60px;
-                padding-right: 20px;
-                height: 39px;
-                line-height: 39px;
-                position: relative;
-                font-weight: 500;
-            }
-
-                .section-title-cus h2::after {
-                    content: "";
-                    width: 0;
-                    height: 0;
-                    border-style: solid;
-                    border-width: 39px 39px 0 0;
-                    border-color: #ed1b24 transparent transparent;
-                    position: absolute;
-                    right: -39px;
-                    top: 0;
+                @if (feedbacks.Count > 0)
+                {
+                    <div class="carousel-inner" style="background-color:darkgrey">
+                        @foreach (var item in feedbacks)
+                        {
+                            if (i == 0)
+                            {
+                                <div class="item active">
+                                    <img src="~/Upload/high-rise-building.jpg" alt="Chicago" style="width:100%;" />
+                                    <div class="carousel-caption">
+                                        <h2 style="color:#fff">@item.Name</h2>
+                                        <p style=" font-size: x-large;color:red">@item.Content</p>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <img src="~/Upload/high-rise-building.jpg" alt="Chicago" style="width:100%;" />
+                                    <div class="carousel-caption">
+                                        <h2 style="color:#fff">@item.Name</h2>
+                                        <p style="font-size:x-large;color:red">@item.Content</p>
+                                    </div>
+                                </div>
+                            }
+                            i++;
+                        }
+                    </div>
                 }
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
 
-            .section-title-cus .group-icon {
-                position: absolute;
-                top: -3px;
-                left: 0;
-                background: #231f20;
-                padding: 10px;
-                display: inline-block;
-                color: #fff;
-                width: 39px;
-                height: 42px;
-                text-align: center;
-                line-height: 19px;
-                z-index: 1;
-            }
+    </div>
 
-        .zoom {
-            transition: transform .2s;
+</div>
+
+<style>
+    .zoom {
+        transition: transform .5s;
+    }
+
+        .zoom:hover {
+            transform: scale(1.1);
         }
 
-            .zoom:hover {
-                transform: scale(1.1);
-            }
-    </style>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
+    .item {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 
-            $('.contact').load("/Home/Contact #contact", function () {
-                initMap();
-            });
+    .item-card {
+        transition: 0.5s;
+        cursor: pointer;
+        display: flex;
+    }
+
+        .item-card a {
+            /*  background:;*/
+            /*  color:forestgreen;*/
+            /*  background-color:none;*/
+        }
+
+            .item-card a btn-success {
+                /* background:none;*/
+                color: forestgreen;
+                background-color: none;
+            }
+
+        .item-card p {
+            margin-bottom: 0.5rem;
+        }
+
+    .item-card-title {
+        font-size: 14px;
+        transition: 1s;
+        cursor: pointer;
+        text-align: left;
+        font-weight: bold;
+    }
+
+        .item-card-title i {
+            font-size: 15px;
+            transition: 1s;
+            cursor: pointer;
+            color: #ffa710
+        }
+
+    .card-title i:hover {
+        transform: scale(1.25) rotate(100deg);
+        color: #18d4ca;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .card-text {
+        height: 20px;
+        text-align: left;
+        padding: 0px;
+    }
+
+    .card::before, .card::after, .zoom::before, .zoom::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: scale3d(0, 0, 1);
+        transition: transform .3s ease-out 0s;
+        background: rgba(255, 255, 255, 0.1);
+        content: '';
+        pointer-events: none;
+    }
+
+    .card::before {
+        transform-origin: left top;
+    }
+
+    .card::after {
+        transform-origin: right bottom;
+    }
+
+    .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after, .zoom:hover::before, .zoom:hover::after, a:hover {
+        transform: scale3d(1, 1, 1);
+        text-decoration:inherit;
+    }
+
+    .card {
+    }
+
+    .grid_1_of_4 {
+        border: none;
+        margin: 1.2% 1.1% 0% 0.1%;
+    }
+
+    .images_1_of_4 p {
+        padding: unset;
+    }
+
+    .card-body h6 {
+        color: darkgoldenrod;
+    }
+
+    .slide {
+        width: 600px;
+        height: 300px;
+    }
+
+    .slidepro {
+        padding: 0px;
+        width: 200%;
+        height: auto;
+    }
+
+    .section-title-cus {
+        border-top: 3px solid #ed1b24;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+        .section-title-cus h2 {
+            margin: 0;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #ed1b24;
+            font-size: 15px;
+            display: inline-block;
+            padding-left: 60px;
+            padding-right: 20px;
+            height: 39px;
+            line-height: 39px;
+            position: relative;
+            font-weight: 500;
+        }
+
+            .section-title-cus h2::after {
+                content: "";
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 39px 39px 0 0;
+                border-color: #ed1b24 transparent transparent;
+                position: absolute;
+                right: -39px;
+                top: 0;
+            }
+
+        .section-title-cus .group-icon {
+            position: absolute;
+            top: -3px;
+            left: 0;
+            background: #231f20;
+            padding: 10px;
+            display: inline-block;
+            color: #fff;
+            width: 39px;
+            height: 42px;
+            text-align: center;
+            line-height: 19px;
+            z-index: 1;
+        }
+
+    .zoom {
+        transition: transform .2s;
+    }
+
+        .zoom:hover {
+            transform: scale(1.1);
+        }
+
+    h6, span {
+        text-decoration: inherit;
+    }
+
+    .h6, h6 {
+        font-size: 14px;
+    }
+
+        h6.card-title {
+            text-decoration: inherit;
+        }
+</style>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.contact').load("/Home/Contact #contact", function () {
+            initMap();
         });
-    </script>
+    });
+
+</script>

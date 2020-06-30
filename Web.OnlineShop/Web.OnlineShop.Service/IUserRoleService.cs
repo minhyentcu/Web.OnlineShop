@@ -17,6 +17,8 @@ namespace Web.OnlineShop.Service
 
         IEnumerable<UserGroup> GetUserGroups();
 
+        UserGroup GetUserGroupById(string id);
+
         IEnumerable<Role> GetRoles();
 
         IEnumerable<Role> GetRolesByGroupId(string groupID);
@@ -25,8 +27,12 @@ namespace Web.OnlineShop.Service
 
         Task<bool> CreatePermission(UserGroup group);
 
-        Task<bool> DeletePermission(string id);
+        Task<bool> DeletePermission(string groupId, string roleId);
 
         Task<bool> UpdatePermission(UserGroup group);
+
+        Task<bool> UpdateUserRole(string groupId,string[]roleId);
+
+        IEnumerable<Permission> GetPermissions();
     }
 }

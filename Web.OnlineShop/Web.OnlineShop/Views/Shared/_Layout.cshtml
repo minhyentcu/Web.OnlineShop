@@ -17,34 +17,13 @@
 <body>
     <div class="wrap">
         <div class="header">
-            <div class="header_top">
-                <div class="logo">
-                    <a href="index.html"><img src="~/Assets/Client/images/logo-minh-hoang.png" alt=""></a>
-                </div>
-                <div class="cart">
-                    <p>Welcome to our Online Store! <span>Cart:</span></p><div id="dd" class="wrapper-dropdown-2">
-                        0 item(s) - $0.00
-                        <ul class="dropdown">
-                            <li>you have no items in your Shopping cart</li>
-                        </ul>
-                    </div><p></p>
-                </div>
-                <div class="clear"></div>
-            </div>
+            
             <div class="headertop_desc">
                 <div class="logo ">
                     <a href="/">
                         <img style="width:40%" src="~/Assets/Client/images/logo-minh-hoang.png" />
                     </a>
                 </div>
-                @*<div class="card">
-                        <div class="search-bar">
-                            <form action="/products" method="get" role="form">
-                                <input type="search" name="q" placeholder="Tìm kiếm sản phẩm ...">
-                                <button type="submit"> <i class="icon-search"></i></button>
-                            </form>
-                        </div>
-                    </div>*@
                 @{Html.RenderAction("MenuTop", "Home");}
 
             </div>
@@ -53,10 +32,6 @@
             <div class="header_bottom">
                 @{Html.RenderAction("MainMenu", "Home");}
                 <div class="search_box">
-                    @*@using (Html.BeginForm("Product", "Search", FormMethod.Get))
-                    {
-                        @Html.TextBox("product") <input type="submit" value="Tìm kiếm sản phẩm" />
-                    }*@
                     <form action="/san-pham/tim-kiem" method="get">
                         <input type="text" name="searchProduct" placeholder="Tìm kiếm sản phẩm"  value="Tìm kiếm sản phẩm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm sản phẩm';}"><input type="submit" placeholder="Tìm kiếm sản phẩm" value="">
                     </form>
@@ -88,6 +63,16 @@
 <style>
     .header_top {
         padding: 0px;
+    }
+    .a,p{
+        text-decoration:inherit;
+    }
+    .menu li a{
+        text-decoration:inherit;
+        font-size:1em;
+    }
+    .categories li a {
+        font-size: 1em;
     }
 </style>
 

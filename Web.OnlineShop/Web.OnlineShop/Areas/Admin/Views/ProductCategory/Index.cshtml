@@ -33,9 +33,7 @@
             <th>
                 <p>Trạng thái</p>
             </th>
-            <th>
-                <p>Hiển thị</p>
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -57,9 +55,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShowOnHome)
-            </td>
+           
             <td>
                 <a href="@Url.Action("Edit","ProductCategory",new { id=item.Id })"><i class="fas fa-edit" style='font-size:24px'></i></a>
                 <a href="@Url.Action("Details","ProductCategory",new { id=item.Id })"><i class="fas fa-bars" style='font-size:24px'></i></a>

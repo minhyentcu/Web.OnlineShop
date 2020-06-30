@@ -15,7 +15,7 @@ namespace Web.OnlineShop.Service
 
         Task<bool> UpdateAsync(Slide slide);
 
-        IEnumerable<Slide> GetAll();
+        IEnumerable<Slide> GetAll(bool status = true);
 
         Task<Slide> GetSlideById(long? id);
     }

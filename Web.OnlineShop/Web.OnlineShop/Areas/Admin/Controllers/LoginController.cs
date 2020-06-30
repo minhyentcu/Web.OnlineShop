@@ -92,8 +92,6 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> ForgotPassword(string email)
         {
-            string message = string.Empty;
-            var status = false;
             var code = await _userService.ForgotPassword(email);
             if (!string.IsNullOrEmpty(code))
             {

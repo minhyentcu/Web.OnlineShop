@@ -67,10 +67,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-
+               
                 <a href="@Url.Action("Edit","Slide",new { id=item.Id })"><i class="fas fa-edit" style='font-size:24px'></i></a>
                 <a href="@Url.Action("Details","Slide",new { id=item.Id })"><i class="fas fa-bars" style='font-size:24px'></i></a>
                 <a href="@Url.Action("Delete","Slide",new { id=item.Id })"><i class="fas fa-trash-alt" style='font-size:24px'></i></a>

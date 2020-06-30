@@ -38,7 +38,7 @@ namespace Web.OnlineShop.Service.Implementation
                 var slide = await _context.Slides.FindAsync(id);
                 if (slide != null)
                 {
-                     _context.Slides.Remove(slide);
+                    _context.Slides.Remove(slide);
                     await _context.SaveChangesAsync();
                     return true;
                 }
@@ -51,8 +51,12 @@ namespace Web.OnlineShop.Service.Implementation
             }
         }
 
-        public IEnumerable<Slide> GetAll()
+        public IEnumerable<Slide> GetAll(bool status = true)
         {
+            if (status == true)
+            {
+                return _context.Slides.Where(x => x.Status == true);
+            }
             return _context.Slides;
         }
 
@@ -72,7 +76,7 @@ namespace Web.OnlineShop.Service.Implementation
                     entity.Descripstion = slide.Descripstion;
                     entity.ModifiedDate = DateTime.Now;
                     entity.Status = entity.Status;
-                    if (!string.IsNullOrEmpty(slide.Image) )
+                    if (!string.IsNullOrEmpty(slide.Image))
                     {
                         entity.Image = slide.Image;
                     }

@@ -20,7 +20,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
-            return View(_productCategoryService.GetAll());
+            return View(_productCategoryService.GetAll(false));
         }
 
         // GET: Admin/ProductCategories/Details/5
@@ -58,11 +58,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _productCategoryService.Create(productCategory);
                 if (result)
                 {
+                    SetAlert("Thêm danh mục sản phẩm thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Thêm danh mục sản phẩm không thành công", "error");
                 return View(productCategory);
             }
-
+            SetAlert("Thêm danh mục sản phẩm không thành công", "error");
             return View(productCategory);
         }
 
@@ -93,10 +95,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _productCategoryService.Update(productCategory);
                 if (result)
                 {
+                    SetAlert("Cập nhật danh mục sản phẩm thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Cập nhật danh mục sản phẩm không thành công", "error");
                 return View(productCategory);
             }
+            SetAlert("Cập nhật danh mục sản phẩm không thành công", "error");
             return View(productCategory);
         }
 
@@ -125,8 +130,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             var result = await _productCategoryService.Delete(id);
             if (result)
             {
+                SetAlert("Xóa danh mục sản phẩm thành công", "success");
                 return RedirectToAction("Index");
             }
+            SetAlert("Xóa danh mục sản phẩm không thành công", "error");
             return RedirectToAction("Index");
         }
     }

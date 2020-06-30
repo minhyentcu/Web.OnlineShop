@@ -100,6 +100,7 @@ namespace Web.OnlineShop.Service.Implementation
                     user.ModifileBy = entity.ModifileBy;
                     user.Phone = entity.Phone;
                     user.ModifiedDate = DateTime.Now;
+                    user.GroupId = entity.GroupId;
                     if (!string.IsNullOrEmpty(user.Password))
                     {
                         user.Password = Encryptor.MD5Hash(entity.Password);

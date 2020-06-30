@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.UI;
 using Web.OnlineShop.Common;
 using Web.OnlineShop.Service;
 using Web.OnlineShop.Service.Implementation;
@@ -40,6 +41,7 @@ namespace Web.OnlineShop.Controllers
             return View(products);
         }
 
+        //[OutputCache(CacheProfile = "CacheOneDay")]
         public ActionResult Detail(long id)
         {
             var product = _productService.GetProductById(id);

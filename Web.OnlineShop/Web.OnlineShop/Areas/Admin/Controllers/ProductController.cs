@@ -14,6 +14,7 @@ using System.Web.Script.Serialization;
 using System.Xml.Linq;
 using Web.OnlineShop.Service.Implementation;
 using Web.OnlineShop.Service;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
@@ -31,13 +32,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
-            var products = _productService.GetProducts(null);
+            var products = _productService.GetProducts(null, false);
             return View(products);
         }
 
         // GET: Admin/Products/Details/5
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
-        public  ActionResult Details(long? id)
+        public ActionResult Details(long? id)
         {
             if (id == null)
             {
@@ -65,7 +66,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
-        public async Task<ActionResult> Create(Product product, HttpPostedFileBase file, IEnumerable<HttpPostedFileBase> files)
+        public async Task<ActionResult> Create(Product product, [Required] HttpPostedFileBase file, [Required] IEnumerable<HttpPostedFileBase> files)
         {
             if (ModelState.IsValid)
             {
@@ -87,19 +88,21 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _productService.Create(product);
                 if (result)
                 {
+                    SetAlert("Thêm sản phẩm thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Thêm sản phẩm không thành công", "error");
                 ViewBag.ProductCategoryId = new SelectList(_productCategoryService.GetAll(), "Id", "Name", product.ProductCategoryId);
                 return View(product);
             }
-
+            SetAlert("Thêm sản phẩm không thành công", "error");
             ViewBag.ProductCategoryId = new SelectList(_productCategoryService.GetAll(), "Id", "Name", product.ProductCategoryId);
             return View(product);
         }
 
         // GET: Admin/Products/Edit/5
         [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
-        public  ActionResult Edit(long? id)
+        public ActionResult Edit(long? id)
         {
             if (id == null)
             {
@@ -143,12 +146,15 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _productService.Update(product);
                 if (result)
                 {
+                    SetAlert("Cập nhật sản phẩm thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Cập nhật sản phẩm không thành công", "error");
                 ViewBag.ImageUrls = CommonConstants.GetUrlImages(product.MoreImages);
                 ViewBag.ProductCategoryId = new SelectList(_productCategoryService.GetAll(), "Id", "Name", product.ProductCategoryId);
                 return View(product);
             }
+            SetAlert("Cập nhật sản phẩm không thành công", "error");
             ViewBag.ImageUrls = CommonConstants.GetUrlImages(product.MoreImages);
             ViewBag.ProductCategoryId = new SelectList(_productCategoryService.GetAll(), "Id", "Name", product.ProductCategoryId);
             return View(product);
@@ -156,7 +162,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
 
         // GET: Admin/Products/Delete/5
         [HasPermission(RoleID = "ALL_ROLE,DELETE_ROLE")]
-        public  ActionResult Delete(long? id)
+        public ActionResult Delete(long? id)
         {
             if (id == null)
             {
@@ -179,8 +185,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             var result = await _productService.Delete(id);
             if (result)
             {
+                SetAlert("Xóa sản phẩm thành công", "success");
                 return RedirectToAction("Index");
             }
+            SetAlert("Xóa sản phẩm không thành công", "error");
             return RedirectToAction("Index");
         }
     }

@@ -17,12 +17,17 @@ namespace Web.OnlineShop.Service.Implementation
 
         public About GetAboutById(long id)
         {
-            return _context.Abouts.FirstOrDefault(x => x.Status == true);
+            return _context.Abouts.FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<Category> GetCategories(bool status = true)
         {
-            return _context.Categories.Where(x => x.Status == true);
+            if (status)
+            {
+                return _context.Categories.Where(x => x.Status == true);
+            }
+            return _context.Categories;
+            
         }
 
         public Category GetCategoryById(long? id)
@@ -47,7 +52,7 @@ namespace Web.OnlineShop.Service.Implementation
                 category.MetaTitle = CommonConstants.ConvertToUnSign(category.Name);
                 category.CreatedDate = DateTime.Now;
                 _context.Categories.Add(category);
-               await  _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -57,7 +62,7 @@ namespace Web.OnlineShop.Service.Implementation
             }
         }
 
-        public async Task<bool>  Update(Category model)
+        public async Task<bool> Update(Category model)
         {
             try
             {
@@ -71,7 +76,7 @@ namespace Web.OnlineShop.Service.Implementation
                     category.Status = model.Status;
                     category.Contents = model.Contents;
                     category.DisplayOrder = model.DisplayOrder;
-                   await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                     return true;
                 }
                 return false;
@@ -82,7 +87,7 @@ namespace Web.OnlineShop.Service.Implementation
             }
         }
 
-        public async Task<bool>  Delete(long id)
+        public async Task<bool> Delete(long id)
         {
             try
             {

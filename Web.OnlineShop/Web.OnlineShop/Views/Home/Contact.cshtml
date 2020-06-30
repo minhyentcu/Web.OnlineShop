@@ -1,6 +1,8 @@
 ﻿@model Web.OnlineShop.Entity.Contact
 @{
     ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var feedback = new Web.OnlineShop.Entity.Feedback();
 }
 <style>
     #mapCanvas {
@@ -8,33 +10,33 @@
     }
 </style>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgLI4LThnXNCYpPdcG7ESyntM19qegLZY&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgLI4LThnXNCYpPdcG7ESyntM19qegLZY&callback=initMap"
         type="text/javascript"></script>
 <script src="/assets/client/js/controller/contactController.js"></script>
 <script>
-         // 12.287271, 109.196644
+    // 12.287271, 109.196644
     //AIzaSyBgLI4LThnXNCYpPdcG7ESyntM19qegLZY
-        function initMap() {
-            var uluru = { lat: 12.287271, lng: 109.196644 };
-            var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-                zoom: 18,
-                center: uluru
-            });
+    function initMap() {
+        var uluru = { lat: 12.287271, lng: 109.196644 };
+        var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+            zoom: 18,
+            center: uluru
+        });
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
 
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-                title: 'Địa chỉ'
-            });
-            marker.addListener('click', function () {
-                infowindow.open(map, marker);
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initMap);
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            title: 'Địa chỉ'
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initMap);
 </script>
 
 
@@ -63,3 +65,129 @@
         <div class="row"> <a href=""> @Model.Email</a></div>
     </div>
 </div>
+
+<div class="content">
+    <div class="section-title-cus mb-20">
+        <span class="group-icon">
+            <i class="fas fa-door-open"></i>
+        </span>
+        <h2>Ý kiến khách hàng</h2>
+    </div>
+</div>
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            <div class="col span_2_of_3">
+                <div class="contact-form">
+                    @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                    {@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group row">
+                        <div class="col-lg-2">
+                            <label for="staticEmail" class=" col-form-label">Tên khách hàng</label>
+                        </div>
+
+                        <div class="col-lg-9">
+                            <input type="text" name="Name" class="form-control" id="staticEmail" value="">
+                            @*@Html.TextBoxFor(feedback=>feedback.N, new { @class = "form-control form-control-lg", @autofocus = "autofocus", @placeholder = "Tên đăng nhập" })*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-2">
+                            <label for="inputPassword" class=" col-form-label">E-mail</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" name="Email" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-2">
+                            <label for="inputPassword" class=" col-form-label">Số điện thoại</label>
+                        </div>
+
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control"name="Phone" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-2">
+                            <label for="inputPassword" class=" col-form-label">Ý kiến khách hàng</label>
+                        </div>
+
+                        <div class="col-lg-9">
+                            <textarea type="text" class="form-control" name="Content" placeholder="" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <span><input type="submit" value="Submit" class="myButton"></span>
+                    </div>
+                }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .slide {
+        width: 600px;
+        height: 300px;
+    }
+
+    .section-title-cus {
+        border-top: 3px solid #ed1b24;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+        .section-title-cus h2 {
+            margin: 0;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #ed1b24;
+            font-size: 15px;
+            display: inline-block;
+            padding-left: 60px;
+            padding-right: 20px;
+            height: 39px;
+            line-height: 39px;
+            position: relative;
+            font-weight: 500;
+        }
+
+            .section-title-cus h2::after {
+                content: "";
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 39px 39px 0 0;
+                border-color: #ed1b24 transparent transparent;
+                position: absolute;
+                right: -39px;
+                top: 0;
+            }
+
+        .section-title-cus .group-icon {
+            position: absolute;
+            top: -3px;
+            left: 0;
+            background: #231f20;
+            padding: 10px;
+            display: inline-block;
+            color: #fff;
+            width: 39px;
+            height: 42px;
+            text-align: center;
+            line-height: 19px;
+            z-index: 1;
+        }
+
+    .zoom {
+        transition: transform .2s;
+    }
+
+        .zoom:hover {
+            transform: scale(1.1);
+        }
+</style>

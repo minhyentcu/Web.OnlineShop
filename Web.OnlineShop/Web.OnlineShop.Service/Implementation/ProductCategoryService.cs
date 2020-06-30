@@ -51,9 +51,13 @@ namespace Web.OnlineShop.Service.Implementation
             }
         }
 
-        public List<ProductCategory> GetAll()
+        public List<ProductCategory> GetAll(bool status = true)
         {
-            return _context.ProductCategories.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
+            if (status)
+            {
+                return _context.ProductCategories.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
+            }
+            return _context.ProductCategories.OrderBy(x => x.DisplayOrder).ToList();
         }
 
         public ProductCategory GetProductCategory(long? id)

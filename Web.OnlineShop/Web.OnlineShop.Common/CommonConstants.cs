@@ -87,21 +87,9 @@ namespace Web.OnlineShop.Common
 
                 var fromEmail = new MailAddress("phamminhyen2d@gmail.com", "Fogot Password");
                 var toEmail = new MailAddress(emailID);
-                var fromEmailPassword = "Ngoalong123";
+                var fromEmailPassword = "@@@";
                 string subject = "Forgot password";
                 string body = "Nhấn vào link để reset password " + "<a href=" + link + ">Reset password link</a>";
-
-                //var smtp = new SmtpClient
-                //{
-                //    Host = "smtp.gmail.com",
-                //    Port = 587,
-                //    EnableSsl = true,
-                //    DeliveryMethod = SmtpDeliveryMethod.Network,
-                //    UseDefaultCredentials = false,
-                //    Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-
-                //};
-
 
                 var message = new MailMessage(fromEmail, toEmail)
                 {
@@ -120,7 +108,6 @@ namespace Web.OnlineShop.Common
 
                     client.Send(message);
                 }
-                //smtp.Send(message);
             }
 
             catch (Exception)

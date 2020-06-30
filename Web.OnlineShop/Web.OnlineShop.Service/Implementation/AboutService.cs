@@ -14,7 +14,7 @@ namespace Web.OnlineShop.Service.Implementation
         {
             _context = context;
         }
-        public async Task<bool>  Delete(long id)
+        public async Task<bool> Delete(long id)
         {
             try
             {
@@ -43,10 +43,14 @@ namespace Web.OnlineShop.Service.Implementation
             return _context.Abouts.Find(id);
         }
 
-        public IEnumerable<About> GetAbouts()
+        public IEnumerable<About> GetAbouts(bool status = true)
         {
             try
             {
+                if (status)
+                {
+                    return _context.Abouts.Where(x => x.Status == true);
+                }
                 return _context.Abouts;
             }
             catch (Exception)
@@ -55,7 +59,7 @@ namespace Web.OnlineShop.Service.Implementation
             }
         }
 
-        public async Task<bool>  Insert(About about)
+        public async Task<bool> Insert(About about)
         {
             try
             {
@@ -70,7 +74,7 @@ namespace Web.OnlineShop.Service.Implementation
             }
         }
 
-        public async Task<bool>  Update(About entity)
+        public async Task<bool> Update(About entity)
         {
             try
             {
@@ -83,7 +87,7 @@ namespace Web.OnlineShop.Service.Implementation
                     about.Detail = entity.Detail;
                     about.ModifiedDate = DateTime.Now;
                     about.Image = entity.Image;
-                   await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                     return true;
                 }
                 return false;

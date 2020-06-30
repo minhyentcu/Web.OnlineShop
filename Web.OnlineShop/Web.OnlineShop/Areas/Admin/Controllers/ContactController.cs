@@ -24,7 +24,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
-            var models = _contactService.Contacts();
+            var models = _contactService.Contacts(false);
             return View(models);
         }
 
@@ -61,11 +61,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _contactService.Create(contact);
                 if (result)
                 {
+                    SetAlert("Thêm bài viết thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Thêm bài viết không thành công", "error");
                 return View(contact);
             }
-
+            SetAlert("Thêm bài viết không thành công", "error");
             return View(contact);
         }
 
@@ -96,10 +98,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _contactService.Update(contact);
                 if (result)
                 {
+                    SetAlert("Cập nhật thông tin liên hệ thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Cập nhật thông tin liên hệ không thành công", "error");
                 return View(contact);
             }
+            SetAlert("Cập nhật thông tin liên hệ không thành công", "error");
             return View(contact);
         }
 
@@ -128,8 +133,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             var result = await _contactService.Delete(id);
             if (result)
             {
+                SetAlert("Xóa bài viết thành công", "success");
                 return RedirectToAction("Index");
             }
+            SetAlert("Xóa bài viết không thành công", "error");
             return RedirectToAction("Index");
         }
     }

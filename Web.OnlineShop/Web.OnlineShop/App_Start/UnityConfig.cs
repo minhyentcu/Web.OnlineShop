@@ -24,6 +24,8 @@ namespace Web.OnlineShop
             container.RegisterType<IContentService, ContentService>();
             container.RegisterType<ISlideService, SlideService>();
             container.RegisterType<IUserRoleService, UserRoleService>();
+            container.RegisterType<IFeedbackService, FeedbackService>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

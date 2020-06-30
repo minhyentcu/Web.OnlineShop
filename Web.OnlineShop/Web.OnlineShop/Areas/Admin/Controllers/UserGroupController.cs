@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Web.OnlineShop.Entity;
 using Web.OnlineShop.Service;
+using Web.OnlineShop.Common;
+using System.Linq;
 
 namespace Web.OnlineShop.Areas.Admin.Controllers
 {
-    public class UserGroupController : Controller
-    {
-        private OnlineShopDbContext db = new OnlineShopDbContext();
 
+    [HasPermission(RoleID = "ALL_USER")]
+    public class UserGroupController : BaseController
+    {
         private readonly IUserRoleService _userRoleService;
         public UserGroupController(IUserRoleService userRoleService)
         {
@@ -23,19 +19,19 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/UserGroup
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.UserGroups.ToListAsync());
+            return View(_userRoleService.GetUserGroups());
         }
 
         // GET: Admin/UserGroup/Details/5
-        public async Task<ActionResult> Details(string id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserGroup userGroup = await db.UserGroups.FindAsync(id);
+            UserGroup userGroup = _userRoleService.GetUserGroupById(id);
             if (userGroup == null)
             {
                 return HttpNotFound();
@@ -59,22 +55,27 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UserGroups.Add(userGroup);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var result = await _userRoleService.CreateAsync(userGroup);
+                if (result)
+                {
+                    SetAlert("Cập nhật quyền thành công", "success");
+                    return RedirectToAction("Index");
+                }
+                SetAlert("Cập nhật quyền không thành công", "error");
+                return View(userGroup);
             }
-
+            SetAlert("Cập nhật quyền không thành công", "error");
             return View(userGroup);
         }
 
         // GET: Admin/UserGroup/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserGroup userGroup = await db.UserGroups.FindAsync(id);
+            UserGroup userGroup = _userRoleService.GetUserGroupById(id);
             if (userGroup == null)
             {
                 return HttpNotFound();
@@ -84,28 +85,33 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
 
         // POST: Admin/UserGroup/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] UserGroup userGroup)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userGroup).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var result= await  _userRoleService.UpdateAsync(userGroup);
+                if (result)
+                {
+                    SetAlert("Cập nhật quyền thành công", "success");
+                    return RedirectToAction("Index");
+                }
+                SetAlert("Cập nhật quyền không thành công", "error");
+                return View(userGroup);
             }
+            SetAlert("Cập nhật quyền không thành công", "error");
             return View(userGroup);
         }
 
         // GET: Admin/UserGroup/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserGroup userGroup = await db.UserGroups.FindAsync(id);
+            UserGroup userGroup = _userRoleService.GetUserGroupById(id);
             if (userGroup == null)
             {
                 return HttpNotFound();
@@ -118,15 +124,19 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            UserGroup userGroup = await db.UserGroups.FindAsync(id);
-            db.UserGroups.Remove(userGroup);
-            await db.SaveChangesAsync();
+            var result = await _userRoleService.DeleteAsync(id);
+            if (result)
+            {
+                SetAlert("Cập nhật quyền thành công", "success");
+                return RedirectToAction("Index");
+            }
+            SetAlert("Cập nhật quyền không thành công", "error");
             return RedirectToAction("Index");
         }
 
         public ActionResult UserGroupRole()
         {
-            return View( db.Permissions.AsEnumerable());
+            return View(_userRoleService.GetPermissions());
         }
 
         public ActionResult EditRole(string groupId)
@@ -135,26 +145,39 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             //ViewBag.RoleIds = _userRoleService.GetRolesByGroupId(groupId);
             ViewBag.RoleId = new SelectList(_userRoleService.GetRolesByGroupId(groupId), "Id", "Name");
             ViewBag.Permissions = _userRoleService.GetPermissionByGroup(groupId);
-            var model = new Permission();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddToRole(string userGroupId,string[] RoleId)
+        public async Task<ActionResult> AddToRole(string userGroupId, string[] RoleId)
         {
-            return View("EditRole", userGroupId);
-        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            var result = await _userRoleService.UpdateUserRole(userGroupId, RoleId);
+            if (result)
             {
-                db.Dispose();
+                SetAlert("Cập nhật quyền thành công", "success");
+                return RedirectToRoute(new { controller = "UserGroup", action = "EditRole", groupId = userGroupId });
+
             }
-            base.Dispose(disposing);
+            SetAlert("Cập nhật quyền không thành công", "error");
+            return RedirectToRoute(new { controller = "UserGroup", action = "EditRole", groupId = userGroupId });
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteRoleFromUser(string userGroupId, string RoleId)
+        {
 
+            var result = await _userRoleService.DeletePermission(userGroupId, RoleId);
+            if (result)
+            {
+                SetAlert("Cập nhật quyền thành công", "success");
+                return RedirectToRoute(new { controller = "UserGroup", action = "EditRole", groupId = userGroupId });
+
+            }
+            SetAlert("Cập nhật quyền không thành công", "error");
+            return RedirectToRoute(new { controller = "UserGroup", action = "EditRole", groupId = userGroupId });
+        }
     }
 }

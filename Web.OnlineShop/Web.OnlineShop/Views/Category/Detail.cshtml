@@ -25,9 +25,9 @@
         </div>
         <div class="col-lg-9">
             <div class="slides_container">
-                <a href="#" target="_blank"><img src="@Url.Content(Model.Image)" alt=" " /></a>
+                <a href="#" target="_blank"><img src="@Url.Content(Model.Image)" alt=" " width="100%"/></a>
                 <h2>@Model.Name</h2>
-                <p>@Model.Detail</p>
+                <p>@Html.Raw(HttpUtility.HtmlDecode(Model.Detail))</p>
             </div>
         </div>
     </div>

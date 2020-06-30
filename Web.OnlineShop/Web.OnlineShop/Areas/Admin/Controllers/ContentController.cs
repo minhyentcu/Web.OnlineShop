@@ -29,7 +29,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
         public ActionResult Index()
         {
-            var contents = _contentService.Contents();
+            var contents = _contentService.Contents(0,false);
             return View(contents);
         }
 
@@ -76,12 +76,14 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _contentService.Insert(content);
                 if (result)
                 {
+                    SetAlert("Thêm bài viết thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Thêm bài viết không thành công", "error");
                 ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
                 return View(content);
             }
-
+            SetAlert("Thêm bài viết không thành công", "error");
             ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
             return View(content);
         }
@@ -120,11 +122,14 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _contentService.Update(content);
                 if (result)
                 {
+                    SetAlert("Cập nhật bài viết thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Cập nhật bài viết không thành công", "error");
                 ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
                 return View(content);
             }
+            SetAlert("Cập nhật bài viết không thành công", "error");
             ViewBag.CategoryId = new SelectList(_categoryService.GetCategories(), "Id", "Name", content.CategoryId);
             return View(content);
         }
@@ -154,8 +159,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             var result = await _contentService.Delete(id);
             if (result)
             {
+                SetAlert("Xóa bài viết thành công", "success");
                 return RedirectToAction("Index");
             }
+            SetAlert("Xóa bài viết không thành công", "error");
             return RedirectToAction("Index");
         }
     }

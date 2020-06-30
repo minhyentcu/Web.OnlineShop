@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Web.OnlineShop.Common;
@@ -15,11 +16,15 @@ namespace Web.OnlineShop.Service.Implementation
         {
             _context = context;
         }
-        public IEnumerable<Content> Contents(int count = 0)
+        public IEnumerable<Content> Contents(int count = 0, bool status = true)
         {
             if (count > 0)
             {
-                return _context.Contents.OrderByDescending(x => x.CreatedDate).Take(count);
+                return _context.Contents.Where(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take(count);
+            }
+            if (status)
+            {
+                return _context.Contents.Where(x => x.Status == true).OrderByDescending(x => x.CreatedDate);
             }
             return _context.Contents;
         }

@@ -26,7 +26,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
-            return View(_aboutService.GetAbouts());
+            return View(_aboutService.GetAbouts(false));
         }
 
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
@@ -70,11 +70,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _aboutService.Insert(about);
                 if (result)
                 {
+                    SetAlert("Thêm bài viết thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Thêm bài viết không thành công", "error");
                 return View(about);
             }
-
+            SetAlert("Thêm bài viết không thành công", "error");
             return View(about);
         }
         [HasPermission(RoleID = "ALL_ROLE,EDIT_ROLE")]
@@ -111,10 +113,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _aboutService.Update(about);
                 if (result)
                 {
+                    SetAlert("Cập nhật bài viết thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Cập nhật bài viết không thành công", "error");
                 return View(about);
             }
+            SetAlert("Cập nhật bài viết không thành công", "error");
             return View(about);
         }
 
@@ -142,8 +147,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             var result = await _aboutService.Delete(id);
             if (result)
             {
+                SetAlert("Xóa bài viết thành công", "success");
                 return RedirectToAction("Index");
             }
+            SetAlert("Xóa bài viết không thành công", "error");
             return RedirectToAction("Index");
         }
     }

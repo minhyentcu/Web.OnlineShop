@@ -26,7 +26,7 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
         [HasPermission(RoleID = "ALL_ROLE,VIEW_ROLE")]
         public ActionResult Index()
         {
-            return View(_slideService.GetAll());
+            return View(_slideService.GetAll(false));
         }
 
         // GET: Admin/Slide/Details/5
@@ -72,11 +72,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _slideService.CreateAsync(slide);
                 if (result)
                 {
+                    SetAlert("Thêm Slide thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Thêm Slide không thành công", "error");
                 return View(slide);
             }
-
+            SetAlert("Thêm Slide không thành công", "error");
             return View(slide);
         }
 
@@ -115,10 +117,13 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
                 var result = await _slideService.UpdateAsync(slide);
                 if (result)
                 {
+                    SetAlert("Cập nhật Slide thành công", "success");
                     return RedirectToAction("Index");
                 }
+                SetAlert("Cập nhật Slide không thành công", "error");
                 return View(slide);
             }
+            SetAlert("Cập nhật Slide không thành công", "error");
             return View(slide);
         }
 
@@ -147,8 +152,10 @@ namespace Web.OnlineShop.Areas.Admin.Controllers
             var result = await _slideService.DeleteAsync(id);
             if (result)
             {
+                SetAlert("Xóa Slide thành công", "success");
                 return RedirectToAction("Index");
             }
+            SetAlert("Xóa Slide không thành công", "error");
             return RedirectToAction("Index");
         }
     }

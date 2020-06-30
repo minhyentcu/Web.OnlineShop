@@ -9,7 +9,7 @@ namespace Web.OnlineShop.Service
 {
     public interface IContentService
     {
-        IEnumerable<Content> Contents(int count = 0);
+        IEnumerable<Content> Contents(int count = 0, bool status = true);
         Content GetContent(long? id);
         Task<bool> Insert(Content content);
         Task<bool> Update(Content content);

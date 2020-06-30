@@ -9,9 +9,6 @@
     Phân quyền người dùng
     }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -33,9 +30,7 @@
         @Html.DisplayFor(modelItem => item.Role.Name)
     </td>
     <td>
-        @Html.ActionLink("Edit", "EditRole", new {  groupId=item.UserGroupId }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        <a href="@Url.Action("EditRole","UserGroup",new { groupId = item.UserGroupId })"><i class="fas fa-edit" style='font-size:24px'></i></a>
     </td>
 </tr>
 }

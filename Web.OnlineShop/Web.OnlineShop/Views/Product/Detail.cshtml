@@ -114,7 +114,7 @@
                     <p>@Html.Raw(HttpUtility.HtmlDecode(Model.Specifications))</p>
                     <div class="mb-20">
                         <h1 class="mr-2 " style="font-size:x-large"> Liên hệ</h1>
-                        <a href="tel:@contact.Phone" class="btn btn-danger col-md-3" style="color:white">@contact.Phone</a> 
+                        <a href="tel:@contact.Phone" class="btn btn-danger col-md-3" style="color:white">@contact.Phone</a>
                         <a href="tel:@contact.PhoneSecond" class="btn btn-danger col-md-3" style="color:white">@contact.PhoneSecond</a>
                     </div>
                 </div>
@@ -159,27 +159,29 @@
             </div>
             <div class="clear"></div>
         </div>
-        <div class="section group">
-            @foreach (var item in reletedProducts)
-            {
-                var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
-                <div class="grid_1_of_4 images_1_of_4 zoom ">
-                    <div> <a href="@url"><img src="@Url.Content(item.Image)" alt=""></a></div>
-
-                    <div class="price" style="border:none">
-                        <h2>@item.Name </h2>
-                        <div class="price-details">
+    </div>
+    <div class="row">
+        @foreach (var item in reletedProducts)
+        {
+            var url = "/chi-tiet/" + item.MetaTitle + "-" + item.Id;
+            <div class="col-md-6 col-lg-3 mb-4 zoom">
+                <a href="@url" class="h-100 w-100">
+                    <div class="card card-product h-100 shadow border-0">
+                        <img class="card-img-top" src="@Url.Content(item.Image)">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title">@item.Name</h6>
+                                <span class="text-muted small d-block">@item.ProductCategory.Name</span>
+                            </div>
+                            <span class="btn btn-success btn-block btn-sm mt-2">Xem Chi Tiết</span>
                         </div>
-                        <br />
-                        <a href="@url" class=" btn btn-success"> Xem chi tiết</a>
-                        <div class="clear"></div>
                     </div>
-                </div>
-            }
-        </div>
-        <div class="see">
-            <p><a href="/san-pham/@categoryProduct.MetaTitle-@categoryProduct.Id">Xem tất cả</a></p>
-        </div>
+                </a>
+            </div>
+        }
+    </div>
+    <div class="see">
+        <p><a href="/san-pham/@categoryProduct.MetaTitle-@categoryProduct.Id">Xem tất cả</a></p>
     </div>
 </div>
 <style>
@@ -232,16 +234,111 @@
         }
 
     .zoom {
-        /* padding: 50px;*/
-        transition: transform .2s; /* Animation */
-        /* width: 200px;
-        height: 200px;*/
-        /* margin: 0 auto;*/
+        transition: transform .5s;
     }
 
         .zoom:hover {
-            transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            transform: scale(1.1);
         }
+
+    .item {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .item-card {
+        transition: 0.5s;
+        cursor: pointer;
+        display: flex;
+    }
+
+        .item-card a {
+            /*  background:;*/
+            /*  color:forestgreen;*/
+            /*  background-color:none;*/
+        }
+
+            .item-card a btn-success {
+                /* background:none;*/
+                color: forestgreen;
+                background-color: none;
+            }
+
+        .item-card p {
+            margin-bottom: 0.5rem;
+        }
+
+    .item-card-title {
+        font-size: 14px;
+        transition: 1s;
+        cursor: pointer;
+        text-align: left;
+        font-weight: bold;
+    }
+
+        .item-card-title i {
+            font-size: 15px;
+            transition: 1s;
+            cursor: pointer;
+            color: #ffa710
+        }
+
+    .card-title i:hover {
+        transform: scale(1.25) rotate(100deg);
+        color: #18d4ca;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .card-text {
+        height: 20px;
+        text-align: left;
+        padding: 0px;
+    }
+
+    .card::before, .card::after, .zoom::before, .zoom::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: scale3d(0, 0, 1);
+        transition: transform .3s ease-out 0s;
+        background: rgba(255, 255, 255, 0.1);
+        content: '';
+        pointer-events: none;
+    }
+
+    .card::before {
+        transform-origin: left top;
+    }
+
+    .card::after {
+        transform-origin: right bottom;
+    }
+
+    .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after, .zoom:hover::before, .zoom:hover::after {
+        transform: scale3d(1, 1, 1);
+    }
+
+    .card {
+    }
+
+    .grid_1_of_4 {
+        border: none;
+        margin: 1.2% 1.1% 0% 0.1%;
+    }
+
+    .images_1_of_4 p {
+        padding: unset;
+    }
+
+    .card-body h6 {
+        color: darkgoldenrod;
+    }
 </style>
 
 

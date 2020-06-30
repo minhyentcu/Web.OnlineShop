@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="file" id="file" class="form-control"  required/>
+                <input type="file" name="file" id="file" class="form-control" required data-msg-required="Hình ảnh không được bỏ trống" />
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,5 +61,14 @@
             </div>
         </div>
     </div>
+
+
 }
+
+<script>
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Trường này không được để trống",
+
+    });
+</script>
 

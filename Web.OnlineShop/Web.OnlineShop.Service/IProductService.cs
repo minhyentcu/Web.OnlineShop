@@ -9,7 +9,7 @@ namespace Web.OnlineShop.Service.Implementation
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetProducts(long? id);
+        IEnumerable<Product> GetProducts(long? id, bool status = true);
 
         Product GetProductById(long? id);
 

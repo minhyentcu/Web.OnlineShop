@@ -10,11 +10,11 @@ namespace Web.OnlineShop.Service
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetCategories();
+        IEnumerable<Category> GetCategories(bool status = true);
         IEnumerable<Content> GetContentsById(long id);
         Content GetContentById(long id);
         Category GetCategoryById(long? id);
-        Task<bool>  Insert(Category category);
+        Task<bool> Insert(Category category);
         Task<bool> Delete(long id);
         Task<bool> Update(Category category);
     }

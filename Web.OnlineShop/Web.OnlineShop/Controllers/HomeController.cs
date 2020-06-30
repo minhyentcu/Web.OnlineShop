@@ -1,5 +1,8 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using Web.OnlineShop.Entity;
 using Web.OnlineShop.Service;
 using Web.OnlineShop.Service.Implementation;
 
@@ -15,9 +18,10 @@ namespace Web.OnlineShop.Controllers
         private readonly IContactService _contactService;
         private readonly IContentService _contentService;
         private readonly ISlideService _slideService;
+        private readonly IFeedbackService _feedbackService;
         public HomeController(IMenuService menuService, IProductService productService, ICategoryService categoryService
             , IAboutService aboutService, IContactService contactService, IProductCategoryService productCategoryService
-            , IContentService contentService, ISlideService slideService)
+            , IContentService contentService, ISlideService slideService, IFeedbackService feedbackService)
         {
             _menuService = menuService;
             _productService = productService;
@@ -27,12 +31,14 @@ namespace Web.OnlineShop.Controllers
             _productCategoryService = productCategoryService;
             _contentService = contentService;
             _slideService = slideService;
+            _feedbackService = feedbackService;
         }
         public ActionResult Index()
         {
             ViewBag.Products = _productService.GetProducts(null).ToList();
             ViewBag.Contact = _contactService.GetContactById(null);
             ViewBag.Contents = _contentService.Contents(4).ToList();
+            ViewBag.Feedbacks = _feedbackService.GetAll().ToList();
             return View();
         }
 
@@ -49,7 +55,23 @@ namespace Web.OnlineShop.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _feedbackService.CreateAsync(feedback);
+                if (result)
+                {
+                    return Redirect("/");
+                }
+            }
+            return Redirect("/");
+        }
+
         [ChildActionOnly]
+        //[OutputCache(Duration = 86400)]
         public ActionResult MainMenu()
         {
             var model = _menuService.GetAllMenuBygroupId(1);
@@ -58,6 +80,7 @@ namespace Web.OnlineShop.Controllers
         }
 
         [ChildActionOnly]
+        //[OutputCache(Duration = 86400)]
         public ActionResult MenuTop()
         {
             var model = _menuService.GetAllMenuBygroupId(2);
@@ -66,6 +89,7 @@ namespace Web.OnlineShop.Controllers
         }
 
         [ChildActionOnly]
+        //[OutputCache(Duration = 86400)]
         public ActionResult Footer()
         {
             ViewBag.productCategorys = _productCategoryService.GetAll();
@@ -76,10 +100,20 @@ namespace Web.OnlineShop.Controllers
 
 
         [ChildActionOnly]
+        //[OutputCache(Duration = 86400)]
         public ActionResult Slide()
         {
             var model = _slideService.GetAll();
             return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        //[OutputCache(Duration = 86400)]
+        public ActionResult Carousel()
+        {
+
+            var feedback = _feedbackService.GetAll();
+            return View(feedback);
         }
     }
 }

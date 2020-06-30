@@ -55,11 +55,13 @@
     <Compile Include="ICategoryService.cs" />
     <Compile Include="IContactService.cs" />
     <Compile Include="IContentService.cs" />
+    <Compile Include="IFeedbackService.cs" />
     <Compile Include="IMenuService.cs" />
     <Compile Include="Implementation\AboutService.cs" />
     <Compile Include="Implementation\CategoryService.cs" />
     <Compile Include="Implementation\ContactService.cs" />
     <Compile Include="Implementation\ContentService.cs" />
+    <Compile Include="Implementation\FeedbackService.cs" />
     <Compile Include="Implementation\SlideService.cs" />
     <Compile Include="Implementation\UserRoleService.cs" />
     <Compile Include="IProductService.cs" />

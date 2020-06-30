@@ -9,7 +9,7 @@ namespace Web.OnlineShop.Service
 {
     public interface IContactService
     {
-        IEnumerable<Contact> Contacts();
+        IEnumerable<Contact> Contacts(bool status = true);
         Contact GetContactById(long? id);
         Task<bool> Create(Contact contact);
         Task<bool> Update(Contact contact);

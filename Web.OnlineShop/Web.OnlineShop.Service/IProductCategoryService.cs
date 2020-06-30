@@ -9,7 +9,7 @@ namespace Web.OnlineShop.Service
 {
     public interface IProductCategoryService
     {
-        List<ProductCategory> GetAll();
+        List<ProductCategory> GetAll(bool status = true);
         ProductCategory GetProductCategory(long? id);
         Task<bool> Create(ProductCategory productCategory);
         Task<bool> Update(ProductCategory productCategory);

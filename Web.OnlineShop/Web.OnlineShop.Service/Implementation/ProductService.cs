@@ -18,13 +18,18 @@ namespace Web.OnlineShop.Service.Implementation
             _context = context;
         }
 
-        public IEnumerable<Product> GetProducts(long? id)
+        public IEnumerable<Product> GetProducts(long? id, bool status = true)
         {
+            var products = _context.Products.Include("ProductCategory").OrderByDescending(x => x.CreatedDate).AsEnumerable();
             if (id != null)
             {
-                return _context.Products.Include("ProductCategory").Where(x => x.ProductCategoryId == id).OrderByDescending(x => x.CreatedDate);
+                return products.Where(x => x.ProductCategoryId == id && x.Status == true);
             }
-            return _context.Products.OrderByDescending(x => x.CreatedDate);
+            if (status == true)
+            {
+                return products.Where(x => x.Status == true);
+            }
+            return products;
         }
 
         public Product GetProductById(long? id)
@@ -34,7 +39,7 @@ namespace Web.OnlineShop.Service.Implementation
 
         public IEnumerable<Product> GetReletedProducts(long productId, long productCategoryId)
         {
-            return _context.Products.Where(x => x.Id != productId && x.ProductCategoryId == productCategoryId);
+            return _context.Products.Where(x => x.Id != productId && x.ProductCategoryId == productCategoryId && x.Status == true);
         }
 
         public async Task<bool> Update(Product entity)
@@ -110,7 +115,7 @@ namespace Web.OnlineShop.Service.Implementation
 
         public IEnumerable<Product> Search(string product)
         {
-            return  _context.Products.Where(x => x.Name.Contains(product));
+            return _context.Products.Where(x => x.Name.Contains(product) && x.Status == true);
         }
     }
 }
